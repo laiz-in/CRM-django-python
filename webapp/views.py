@@ -24,4 +24,9 @@ def login_user(request):
     pass
 
 def logout_user(request):
-    pass
+    logout(request)
+    messages.success(request,"you have logged out!")
+    return redirect('home')
+
+def register_user(request):
+    return render(request,'register.html',{})
