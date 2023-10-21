@@ -9,17 +9,15 @@
 <br>
 <form method="POST" action={% url 'home' %}>
         {% csrf_token %}
-        <form>
             <div class="mb-3">
               <input type="text" class="form-control" name="username" placeholder="Username" required>
             </div>
             <div class="mb-3">
               <input type="password" class="form-control" name="password" placeholder="password" required>
             </div>
-            <button type="submit" class="btn btn-secondary">Submit</button>
-          </form>
-        </form>
-        <br>
+            <button type="submit" class="btn btn-secondary">Log in</button>
+</form>
+<br>
 </div>
 {% endif %}
  {% endblock %}
