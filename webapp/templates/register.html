@@ -2,33 +2,37 @@
 {% block content %}
 {% load static %}
 
-<div class="col-md-6 offset-md-3">
-<h1>Register your account</h1>
-<br/>
-
-<form method="POST" action="">
-	{% csrf_token %}
-	{% if form.errors %}
-			<div class="alert alert-warning alert-dismissible fade show" role="alert">
-			  Your Form Has Errors
-			  {% for field in form %}
-			  	{% if field.errors %}
-			  		{{ field.errors }}
-			  	{% endif %}
-			  {% endfor %}
-			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		{% endif %}
-
-	{{ form.as_p }}
-
-	<br/>
-	  <button type="submit" class="btn btn-secondary">Register</button>
-	</form>
-
-
-
+<!--===========================================================-->
+<div class="container describeview">
+	<div class="row">
+		<div class="col-md-6 left-register">
+			<!-- Left side - Information about your website -->
+			<h2>What you will get?</h2>
+			<br>
+			<p>a comprehensive platform that simplifies customer relationship management. Our solution empowers you to create user accounts securely and efficiently store essential data, providing a centralized hub for managing customer interactions, sales, leads, and more. With user-friendly interfaces and robust functionalities, our CRM enables seamless organization, analysis, and access to critical customer information, enhancing business relationships and driving growth</p>
+		</div>
+		<div class="col-md-6 loginview">
+			<!-- Right side - Login form -->
+			<h2>Register your account</h2>
+			<br/>
+			<form method="POST" action="">
+				{% csrf_token %}
+				{% if form.errors %}
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						Your Form Has Errors
+						{% for field in form %}
+							{% if field.errors %}
+								{{ field.errors }}
+							{% endif %}
+						{% endfor %}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					{% endif %}
+				{{ form.as_p }}
+				<button type="submit" class="btn btn-primary mb-2">Register</button>
+			</form>
+		</div>
+	</div>
 </div>
-
 {% endblock %}
 
