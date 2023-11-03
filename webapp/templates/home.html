@@ -1,16 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
 
 
 
 {% if user.is_authenticated %}
-<h1>Welcome, {{ user.first_name }} {{ user.last_name }}</h1>
-<br>
+<div class="container">
+  <div class="row table-top align-items-center ">
+      <div class="col-md-6 p-0">
+          <h1>Hello <span class="gradient-text">{{ user.first_name }} {{ user.last_name }}</span></h1>
+      </div>
+      <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-0">
+        <div id="search" class="responsive-search-bar bg-dark pl-3">
+          <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
+          <div class="search-button-container bg-dark" onclick="searchFunction()">
+                  <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
 
-<table class="table table-striped table-hover table-bordered">
-  <thead class="table-dark">
+
+<table class="table table-data">
+  <thead class="table-dark text-light">
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
@@ -28,7 +43,7 @@
 {% if records %}
 	{% for record in records %}
 		<tr>
-			<td>{{ record.first_name }} {{ record.last_name }}</td>
+			<td><a href="{% url 'record' record.id %}">{{ record.first_name }} {{ record.last_name }}</a></td>
 			<td>{{ record.email }}</td>
 			<td>{{ record.phone }}</td>
 			<td>{{ record.address }}</td>
@@ -53,24 +68,24 @@
 {% else %}
 <div class="container describeview">
   <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 order-lg-1 order-2">
           <!-- Left side - Information about your website -->
-          <h2>A complete CRM solution</h2>
+          <h1>A complete student management solution</h1>
           <br>
-          <p>a comprehensive platform that simplifies customer relationship management. Our solution empowers you to create user accounts securely and efficiently store essential data, providing a centralized hub for managing customer interactions, sales, leads, and more. With user-friendly interfaces and robust functionalities, our CRM enables seamless organization, analysis, and access to critical customer information, enhancing business relationships and driving growth</p>
+          <p>a comprehensive platform that simplifies student records and management. Our solution empowers you to create administrative accounts securely and efficiently store essential data, providing a centralized hub for managing students details, marks, perfomance details and more. With user-friendly interfaces and robust functionalities, our SRM enables seamless organization, analysis, and access to critical student informations</p>
       </div>
-      <div class="col-md-6 loginview">
+      <div class="col-md-6 loginview order-lg-2 order-1">
           <!-- Right side - Login form -->
           <div class="col-md-8 offset-md-2">
-              <h2 class="text-dark ">Login</h2>
+              <h2 class=" ">Login</h2>
               <br>
               <form method="POST" action="{% url 'home' %}">
                   {% csrf_token %}
                   <div class="mb-3">
-                      <input type="text" class="form-control" name="username" placeholder="Username" required>
+                      <input type="text" class="form-control custom-field-bg" name="username" placeholder="Username" required>
                   </div>
                   <div class="mb-3">
-                      <input type="password" class="form-control" name="password" placeholder="Password" required>
+                      <input type="password" class="form-control custom-field-bg" name="password" placeholder="Password" required>
                   </div>
                   <button type="submit" class="btn btn-primary">Login</button>
                   <br>
@@ -81,6 +96,40 @@
   </div>
 </div>
 
+<div class="container">
+    <div class= "row feature-cards">
+        <div class ="col-md-3 mb-3 col-6 single-card">
+          <div class="icon-container">
+            <img src={% static "assets/teacher_portal.svg" %} alt="Icon">
+          </div>
+          <h1 class="gradient-text-icon">Teacher portal </h1>
+        </div>
+
+        <div class ="col-md-3 mb-3 col-6 single-card ">
+            <div class="icon-container">
+              <!-- Using an <img> tag for the icon -->
+              <img src={% static "assets/parent_portal.svg" %} alt="Icon">
+          </div>
+          <h1 class="gradient-text-icon">Parent portal</h1>
+        </div>
+
+        <div class ="col-md-3 mb-3 col-6 single-card">
+            <div class="icon-container">
+              <!-- Using an <img> tag for the icon -->
+              <img src={% static "assets/progress_icon.svg" %} alt="Icon">
+          </div>
+          <h1 class="gradient-text-icon">Progress analysis</h1>
+        </div>
+
+        <div class ="col-md-3 mb-3 col-6 single-card">
+            <div class="icon-container">
+              <!-- Using an <img> tag for the icon -->
+              <img src={% static "assets/ai_icon.svg" %} alt="Icon">
+          </div>
+          <h1 class="gradient-text-icon">AI enabled predictions</h1>
+        </div>
+    </div>
+</div>
 
 
 {% endif %}

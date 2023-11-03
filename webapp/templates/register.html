@@ -5,13 +5,15 @@
 <!--===========================================================-->
 <div class="container describeview">
 	<div class="row">
-		<div class="col-md-6 left-register">
+		<div class="col-md-6 left-register order-lg-1 order-2">
 			<!-- Left side - Information about your website -->
-			<h2>What you will get?</h2>
+			<h1>What you will get?</h1>
 			<br>
-			<p>a comprehensive platform that simplifies customer relationship management. Our solution empowers you to create user accounts securely and efficiently store essential data, providing a centralized hub for managing customer interactions, sales, leads, and more. With user-friendly interfaces and robust functionalities, our CRM enables seamless organization, analysis, and access to critical customer information, enhancing business relationships and driving growth</p>
+			<p>a comprehensive platform that simplifies customer relationship management. Our solution empowers you to create user accounts securely and efficiently store essential data, <br><br>providing a centralized hub for managing customer interactions, sales, leads, and more. With user-friendly interfaces and robust functionalities, our CRM enables seamless organization, analysis, and access to critical customer information, enhancing business relationships and driving growth</p>
+		    <br>
+
 		</div>
-		<div class="col-md-6 loginview">
+		<div class="col-md-6 loginview order-lg-2 order-1 text-light">
 			<!-- Right side - Login form -->
 			<h2>Register your account</h2>
 			<br/>
@@ -33,6 +35,43 @@
 			</form>
 		</div>
 	</div>
+</div>
+<br>
+
+
+<div class="container">
+    <div class= "row feature-cards">
+        <div class ="col-md-3 mb-3 col-6 single-card">
+          <div class="icon-container">
+            <img src={% static "assets/teacher_portal.svg" %} alt="Icon">
+          </div>
+          <h1 class="gradient-text-icon">Teacher portal </h1>
+        </div>
+
+        <div class ="col-md-3 mb-3 col-6 single-card ">
+            <div class="icon-container">
+              <!-- Using an <img> tag for the icon -->
+              <img src={% static "assets/parent_portal.svg" %} alt="Icon">
+          </div>
+          <h1 class="gradient-text-icon">Parent portal</h1>
+        </div>
+
+        <div class ="col-md-3 mb-3 col-6 single-card">
+            <div class="icon-container">
+              <!-- Using an <img> tag for the icon -->
+              <img src={% static "assets/progress_icon.svg" %} alt="Icon">
+          </div>
+          <h1 class="gradient-text-icon">Progress analysis</h1>
+        </div>
+
+        <div class ="col-md-3 mb-3 col-6 single-card">
+            <div class="icon-container">
+              <!-- Using an <img> tag for the icon -->
+              <img src={% static "assets/ai_icon.svg" %} alt="Icon">
+          </div>
+          <h1 class="gradient-text-icon">AI enabled predictions</h1>
+        </div>
+    </div>
 </div>
 {% endblock %}
 

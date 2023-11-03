@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
-<h1>Add Record</h1>
+<div class="col-md-4  ml-auto text-left">
+<h1>Enroll new student record</h1>
 <br/>
 
 <form method="POST" action="{% url 'add_record' %}">
@@ -11,7 +11,7 @@
 	{{ form.as_p }}
 
 <br/>
-  <button type="submit" class="btn btn-secondary">Add Record</button>
+  <button type="submit" class="btn btn-primary">Add Record</button>
    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 
 </form>
