@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm, AddRecordForm
-from .models import Record
+from .forms import SignUpFormForStaff, AddStudentRecordForm
+from .models import StaffRecords, StudentRecords
 
 
 def home(request):
-	records = Record.objects.all()
+	StudentRecord = StudentRecords.objects.all()
 	# Check to see if logging in
 	if request.method == 'POST':
 		username = request.POST['username']
@@ -18,11 +18,13 @@ def home(request):
 			messages.success(request, "You Have Been Logged In!")
 			return redirect('home')
 		else:
-			messages.success(request, "There Was An Error Logging In, Please Try Again...")
+			messages.success(request, "Invalid credentials , Please Try Again...")
 			return redirect('home')
 	else:
-		return render(request, 'home.html', {'records':records})
+		return render(request, 'home.html', {'StudentRecords':StudentRecord})
 
+def parenthome(request):
+	pass
 
 
 def logout_user(request):
@@ -33,7 +35,7 @@ def logout_user(request):
 
 def register_user(request):
 	if request.method == 'POST':
-		form = SignUpForm(request.POST)
+		form = SignUpFormForStaff(request.POST)
 		if form.is_valid():
 			form.save()
 			# Authenticate and login
@@ -44,17 +46,34 @@ def register_user(request):
 			messages.success(request, "You Have Successfully Registered! Welcome!")
 			return redirect('home')
 	else:
-		form = SignUpForm()
-		return render(request, 'register.html', {'form':form})
+		form = SignUpFormForStaff()
+		return render(request, 'staffregister.html', {'form':form})
 
-	return render(request, 'register.html', {'form':form})
+	return render(request, 'staffregister.html', {'form':form})
 
+def register_parent(request):
+	if request.method == 'POST':
+		form = SignUpFormfor(request.POST)
+		if form.is_valid():
+			form.save()
+			# Authenticate and login
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password1']
+			user = authenticate(username=username, password=password)
+			login(request, user)
+			messages.success(request, "You Have Successfully Registered a parent account! Welcome!")
+			return redirect('home')
+	else:
+		form = SignUpFormforParent()
+		return render(request, 'parentregister.html', {'form':form})
+
+	return render(request, 'parentregister.html', {'form':form})
 
 
 def customer_record(request, pk):
 	if request.user.is_authenticated:
 		# Look Up Records
-		customer_record = Record.objects.get(id=pk)
+		customer_record = StudentRecords.objects.get(id=pk)
 		return render(request, 'record.html', {'customer_record':customer_record})
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
@@ -64,7 +83,7 @@ def customer_record(request, pk):
 
 def delete_record(request, pk):
 	if request.user.is_authenticated:
-		delete_it = Record.objects.get(id=pk)
+		delete_it = StudentRecords.objects.get(id=pk)
 		delete_it.delete()
 		messages.success(request, "Record Deleted Successfully...")
 		return redirect('home')

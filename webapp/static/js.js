@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 alert.remove();
             }, 1000); // Change delay if necessary
-        }, 1000); // Time in milliseconds - 3 seconds
+        }, 3000); // Time in milliseconds - 3 seconds
     });
 });
 

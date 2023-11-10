@@ -1,3 +1,6 @@
+.navbar-toggler:focus, .navbar-toggler:active{
+    text-decoration: none;
+  }
 .navbar-logo{
     max-height: 60px;
     vertical-align: middle;
@@ -6,13 +9,13 @@
 .describeview h1{
     font-weight: 700;
     font-size: 40px;
-    background-image: linear-gradient(to right, #02d4d4, #e75fe7);
+    background-image: linear-gradient(to right, rgb(2, 212, 149), #047747);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 .gradient-text{
-    background-image: linear-gradient(to right, #02d4d4, #e75fe7); 
+    background-image: linear-gradient(to right, rgb(2, 212, 149), #047747);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -20,7 +23,7 @@
 
 /*======================================================== CARD ===============================================================*/
 .card {
-    background-color: rgb(155, 153, 152) !important;
+    background-color: rgb(175, 69, 17) !important;
     color: #3a3939;
     border: none !important;
     border-style:none !important;
@@ -32,33 +35,24 @@
   }
   .card-header h2 {
     margin: 0;
-
-
   }
-  
   .card-body {
     padding: 20px;
     background-color: #2b2929;
     color: #cecace !important;
-
-  }
-  
+  } 
   .info-section {
     margin-bottom: 10px;
-
   }
-  
   strong {
     font-weight: bold;
   }
-  
 /*======================================================== CARD ENDS ===========================================================*/
 .describeview .loginview{
-    background: linear-gradient(to right, rgb(52, 59, 58),rgb(35, 36, 36));
+    background: linear-gradient(to right, rgb(10, 17, 16),rgb(18, 41, 41));
     margin-right: 0px;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 .table-data tr:nth-child(even) td {
     background-color: #666565 !important;
@@ -83,7 +77,7 @@
 }
 .navbar .logout-btn{
     background-color: rgb(245, 89, 42);
-    border-radius: 10px;
+    border-radius: 7px;
     padding: 7px !important;
     margin-left: 10px;
     color: white;
@@ -94,9 +88,8 @@
     color: rgb(255, 255, 255);
 }
 .table-data{
-    border: none !important;
     color: #cecace !important;
-    background-color:rgb(51, 49, 49) !important;
+    background-color:rgb(43, 42, 42) !important;
 
 }
 .table-data td a,.table-data td a:link{
@@ -107,11 +100,11 @@
     color: rgb(252, 250, 250) !important;
 }
 .table-data td,tr{
-    background-color:rgb(77, 75, 75) !important;
+    background-color:rgb(66, 63, 63) !important;
     border: none !important;
 }
 body{
-    background-color: rgb(70, 71, 71) !important;
+    background-color: rgb(24, 24, 24) !important;
     color: rgb(221, 220, 219) !important;
 }
 /*================================================================   CARD  =============================================*/
@@ -130,7 +123,7 @@ body{
     max-width: 70px;
 }
 .gradient-text-icon{
-    background-image: linear-gradient(to right, #02d4d4, #e75fe7); 
+    background-image: linear-gradient(to right, rgb(2, 212, 149), #047747);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -194,15 +187,6 @@ body{
 }
 
 
-
-
-
-
-
-
-
-
-
 @media (min-width: 1200px) {
     .nav-container {
         margin-bottom: 25px;
@@ -211,6 +195,19 @@ body{
 
 
 @media (max-width: 767px) {
+    .nav-container{
+        padding: 0;
+    }
+    .gradient-text-icon{
+        font-size: 20px;
+    }
+    .gradient-text-icon h1{
+        padding-top: 7px;
+    }
+    .describeview h1{
+        padding-top: 8px;
+        font-size: 30px;
+    }
     .navbar-logo{
         max-height: 30px;
         vertical-align: middle;
@@ -218,9 +215,58 @@ body{
     }
     .describeview .loginview{
         margin-right: 10px;
-        box-shadow:none; /* offsetX offsetY blur spread color */
     }
     .describeview h2{
         margin-top: 15px;
     }
+    .navbar .logout-btn{
+        max-width: fit-content;
+    }
+    #search input[type="search"] {
+
+        color: #979595;
+        border: none!important;
+        padding: 5px;
+        border-radius: 5px;
+        max-width: 65vw!important;
+    }
+    .table-data{
+        border-collapse: collapse;
+    }
+    #footersection footer {
+        padding: 5px; /* Adjust the overall padding */
+      }
+    
+      #footersection footer h6 {
+        font-size: 14px; /* Reduce the size of headings */
+      }
+    
+      #footersection footer p {
+        font-size: 12px; /* Reduce the size of paragraph text */
+      }
+    
+      #footersection footer hr {
+        margin: 5px auto; /* Adjust the spacing for hr elements */
+      }
+    
+      #footersection footer section {
+        padding: 10px; /* Adjust section padding */
+      }
+    
+      #footersection footer .text-center {
+        font-size: 12px; /* Reduce font size for the 'text-center' class */
+      }
+    
+      #footersection footer .text-white {
+        font-size: 12px; /* Reduce font size for white text */
+      }
+    
+      #footersection footer .container {
+        padding: 10px; /* Adjust padding for the footer content container */
+      }
+    
+      #footersection footer .fas {
+        font-size: 12px; /* Adjust the icon size */
+      }
+    
 }
