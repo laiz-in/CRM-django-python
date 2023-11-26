@@ -16,7 +16,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.198']
 
 AUTH_USER_MODEL = "website.CustomUser"
-
+AUTHENTICATION_BACKENDS=['website.EmailBackEnd.EmailBackEnd']
 
 
 # Application definition
@@ -40,6 +40,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'website.LoginCheckMiddleWare.LoginCheckMiddleWare',
+
 ]
 
 ROOT_URLCONF = 'dcrm.urls'
@@ -108,6 +110,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+ADMIN_URL = 'admin/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

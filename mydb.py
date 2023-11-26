@@ -8,4 +8,4 @@
 # cursorObject = dataBase.cursor()
 
 # # One time executable
-# cursorObject.execute("CREATE DATABASE crmdatabase") 
+# cursorObject.execute("CREATE DATABASE crmwebapp") 

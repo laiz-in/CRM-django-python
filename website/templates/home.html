@@ -3,70 +3,8 @@
 {% block content %}
 {% load static %}
 
-
-
 {% if user.is_authenticated %}
-<div class="container">
-  <div class="row table-top align-items-center ">
-      <div class="col-md-6 p-0">
-        {% if user.is_superuser %}
-          <h1>Hello <span class="gradient-text">Admin !</span></h1>
-        {% else %}
-        <h1>Hello <span class="gradient-text">{{ user.first_name }} {{ user.last_name }}</span></h1>
-        {% endif %}
-      </div>
-      <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-0">
-        <div id="search" class="responsive-search-bar bg-dark pl-3">
-          <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
-          <div class="search-button-container bg-dark" onclick="searchFunction()">
-                  <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
 
-<table class="table table-data">
-  <thead class="table-dark text-light tablehead">
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col">Student ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email ID</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Tutor in charge</th>
-      <th scope="col">Parent contact</th>
-      <th scope="col">Parent name</th>
-      <th scope="col">City</th>
-      <th scope="col">State</th>
-      <th scope="col">Zipcode</th>
-      <th scope="col">Created At</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-{% if records %}
-	{% for record in records %}
-		<tr>
-			<td><a href="{% url 'record' record.id %}">{{ record.first_name }} {{ record.last_name }}</a></td>
-			<td>{{ record.email }}</td>
-			<td>{{ record.phone }}</td>
-			<td>{{ record.address }}</td>
-			<td>{{ record.city }}</td>
-			<td>{{ record.state }}</td>
-			<td>{{ record.zipcode }}</td>
-			<td>{{ record.created_at }}</td>
-			<td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
-		</tr>
-	{% endfor %}
-
-{% endif %}
-
-	
-	  </tbody>
-	</table>
-
-{% else %}
 <div class="container describeview">
   <div class="row">
       <div class="col-md-6 order-lg-1 order-2">
@@ -78,20 +16,23 @@
       <div class="col-md-6 loginview order-lg-2 order-1">
           <!-- Right side - Login form -->
           <div class="col-md-8 offset-md-2">
-              <h2 class=" ">Staff login</h2>
+              <h2 class=" "> login</h2>
               <br>
-              <form method="POST" action="{% url 'home' %}">
-                  {% csrf_token %}
-                  <div class="mb-3">
-                      <input type="email" class="form-control custom-field-bg " name="email" placeholder="email" required>
-                  </div>
-                  <div class="mb-3">
-                      <input type="password" class="form-control custom-field-bg" name="password" placeholder="Password" required>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Login</button>
-                  <br> 
-                  <br>
-              </form>
+              <form action="/doLogin/" method="post" >
+                {% csrf_token %}
+              <div class="custom-field-bg mb-3">
+                <input type="email" class="form-control custom-field-bg" placeholder="Email" name="email" required >
+              </div>
+              <div class="custom-field-bg mb-3">
+                <input type="password" class="form-control custom-field-bg" placeholder="Password" name="password" required >
+              </div>
+              <div class="row">
+                <!-- /.col -->
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </div><!-- /.col -->
+              </div>
+            </form>
           </div>
       </div>
   </div>
@@ -133,7 +74,6 @@
 </div>
 
 
-{% endif %}
 <br>
 
 

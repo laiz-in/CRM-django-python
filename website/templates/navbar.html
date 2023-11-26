@@ -19,29 +19,29 @@
                   <a class="nav-link nav-text" href="{% url 'home' %}">Home </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-text" href="{% url 'register_account' %}">Enroll staff </a>
+                  <a class="nav-link nav-text" href="{% url 'home' %}">register student </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-text" href="{% url 'add_student' %}">Enroll parent</a>
+                  <a class="nav-link nav-text" href="{% url 'home' %}">register parent</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-text" href="{% url 'register_account' %}">Enroll student</a>
+                  <a class="nav-link nav-text" href="{% url 'home' %}">regist staff</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link logout-btn" href="{% url 'logout' %}">Logout</a>
+                  <a class="nav-link logout-btn" href="{% url 'logout_user' %}">Logout</a>
                 </li>   
             {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
               <li class="nav-item">
-                <a class="nav-link nav-text" href="{% url 'add_student' %}">Enroll student  </a>
+                <a class="nav-link nav-text" href="{% url 'home' %}">Enroll student  </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-text" href="{% url 'add_student' %}">update student</a>
+                <a class="nav-link nav-text" href="{% url 'home' %}">update student</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link logout-btn" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-link logout-btn" href="{% url 'home' %}">Logout</a>
               </li>
               {% endif %}
         {% else %}
@@ -49,22 +49,16 @@
             <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'register_account' %}">How to register</a>
+            <a class="nav-link" href="{% url 'home' %}">How to register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Blogspot</a>
           </li>        
-          <li class="nav-item">
+          {% comment %} <li class="nav-item">
             <a class="nav-link" href="home.html#footersection">About us</a>
-          </li>        
+          </li>         {% endcomment %}
         {% endif %}
 
-
-
-
-        
-        
-        
       </ul>     
     </div>
   </div>

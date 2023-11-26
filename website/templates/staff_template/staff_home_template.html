@@ -1,0 +1,21 @@
+{% extends 'staff_template/base_template.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row table-top align-items-center ">
+        <div class="col-md-6 p-0">
+            <h1>Hello <span class="gradient-text">{{ user.first_name}} {{ user.last_name }}</span></h1>
+        </div>
+        <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-0">
+          <div id="search" class="responsive-search-bar bg-dark pl-3">
+            <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
+            <div class="search-button-container bg-dark" onclick="searchFunction()">
+                    <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+

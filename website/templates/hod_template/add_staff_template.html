@@ -1,0 +1,70 @@
+{% extends 'hod_template/home_content.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row table-top align-items-center ">
+        <div class="col-md-6 p-0">
+            <h1>Add a new staff</span></h1>
+        </div>
+        <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-0">
+          <div id="search" class="responsive-search-bar bg-dark pl-3">
+            <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
+            <div class="search-button-container bg-dark" onclick="searchFunction()">
+                    <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class = "row">
+      <div class="col-md-6 p-0 ">
+    <form role="form" action="/add_staff_save" method="post">
+      {% csrf_token %}
+    <div class="card-body "style="background-color: rgb(24, 24, 24); ">
+      <div class="form-group mb-2" style="background-color: rgb(24, 24, 24); ">
+        <input type="email" class="form-control" name="email" placeholder="Enter email"required>
+      </div>
+      <div class="form-group mb-2" style="background-color: rgb(24, 24, 24);">
+        <input type="text" class="form-control" placeholder="Username" name="username"required>
+      </div>
+      <div class="form-group mb-2 " style="background-color: rgb(24, 24, 24); ">
+        <input type="password" class="form-control" placeholder="Password" name="password"required>
+      </div>
+       <div class="form-group mb-2" style="background-color: rgb(24, 24, 24);">
+        <input type="text" class="form-control" placeholder="First Name" name="first_name"required>
+      </div>
+       <div class="form-group mb-2"  style="background-color: rgb(24, 24, 24);">
+        <input type="text" class="form-control" placeholder="Last Name" name="last_name" required>
+      </div>
+      <div class="form-group mb-2" style="background-color: rgb(24, 24, 24);">
+        <input type="text" class="form-control" placeholder="Address" name="address"required>
+      </div>
+          <div class="form-group" style="background-color: rgb(24, 24, 24);">
+          {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+            {% endif %}
+            {% if message.tags == 'success' %}
+            <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+            {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+     </div>
+     <br>
+     <div class="card-footer">
+      <button type="submit" class="btn btn-primary btn-block">Add Staff</button>
+      </div>
+  </form>
+  </div>
+
+
+
+
+  </div>
+
+{% endblock %}
+
+
