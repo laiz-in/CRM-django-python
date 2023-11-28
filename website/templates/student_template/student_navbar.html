@@ -13,28 +13,16 @@
     <div class="collapse navbar-collapse nav-ul" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0 justify-content-end">
           <li class="nav-item">
-            {% url 'add_staff' as add_staff %}
-            <a class="nav-link {% if request.path == add_staff %} active {% endif %}" href="{% url 'add_staff' %}">Add staff</a>
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
-
-
           <li class="nav-item">
-            {% url 'add_student' as add_student %}
-            <a class="nav-link {% if request.path == add_student %} active {% endif %}" href="{% url 'add_student' %}">Add student</a>
-          </li> 
-          
+            <a class="nav-link" href="{% url 'home' %}"> Attendance</a>
+          </li>      
           <li class="nav-item">
-            {% url 'add_student' as add_student %}
-            <a class="nav-link {% if request.path == add_student %} active {% endif %}" href="{% url 'add_student' %}">Add courses</a>
-          </li> 
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Register parent</a>
+            <a class="nav-link" href="{% url 'home' %}">Courses </a>
           </li>     
-
-
-          <li class="nav-item p-0">
-            <a class="nav-link logout-btn m-0" href="{% url 'logout_user' %}">Logout</a>
+          <li class="nav-item">
+            <a class="nav-link logout-btn" href="{% url 'logout_user' %}">Logout</a>
           </li>  
 
       </ul>     

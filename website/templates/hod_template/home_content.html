@@ -3,9 +3,9 @@
 {% load static %}
 <div class="container">
     <div class="row table-top align-items-center ">
-        <div class="col-md-6 p-0">
+        <div class="col-md-6 p-0 mb-2" >
             <h1>Hello <span class="gradient-text">Admin!</span></h1>
-        </div>
+        </div >
         <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-0">
           <div id="search" class="responsive-search-bar bg-dark pl-3">
             <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
@@ -16,6 +16,52 @@
         </div>
     </div>
   </div>
+ 
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3 ps-md-0 ps-lg-0 mb-3 p-xs-0">
+            <!-- Column 1 Content -->
+            <div class="card  ">
+                <div class="card-body bg-dark">
+                    <h5 class="card-title">View students</h5>
+                    <p class="card-text">Column 1 Content Goes Here.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3 ">
+            <!-- Column 2 Content -->
+            <div class="card">
+                <div class="card-body bg-dark ">
+                    <h5 class="card-title">View staffs</h5>
+                    <p class="card-text">Column 2 Content Goes Here.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <!-- Column 3 Content -->
+            <div class="card">
+                <div class="card-body bg-dark ">
+                    <h5 class="card-title">view attendance</h5>
+                    <p class="card-text">Column 3 Content Goes Here.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 pe-md-0 pe-lg-0">
+          <!-- Column 3 Content -->
+          <div class="card">
+              <div class="card-body bg-dark">
+                  <h5 class="card-title">view assessments</h5>
+                  <p class="card-text">Column 4 Content Goes Here.</p>
+              </div>
+          </div>
+      </div>
+
+    </div>
+ </div>
 
 {% endblock %}
 

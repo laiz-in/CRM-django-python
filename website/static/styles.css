@@ -187,6 +187,11 @@ body{
     font-size: 15px !important;
     color: #979595;
     border-radius: 7px;
+    
+}
+.custom-label{
+    font-weight: 500;
+    font-size: 19px;
 }
 .describeview .btn{
     border:none;
@@ -214,9 +219,15 @@ body{
     .gradient-text-icon h1{
         padding-top: 7px;
     }
+    .gradient-text{
+        font-size: 35px;
+    }
+    .table-top h1{
+        font-size: 35px;
+    }
     .describeview h1{
         padding-top: 8px;
-        font-size: 30px;
+        font-size: 40px;
     }
     .navbar-logo{
         max-height: 30px;
@@ -235,10 +246,10 @@ body{
     #search input[type="search"] {
 
         color: #979595;
-        border: none!important;
         padding: 5px;
         border-radius: 5px;
-        max-width: 65vw!important;
+        width: 100%;
+        
     }
     .table-data{
         border-collapse: collapse;

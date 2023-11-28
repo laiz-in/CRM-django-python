@@ -1,13 +1,17 @@
  <form role="form" action="{{ action_path }}" method="post" enctype="multipart/form-data">
                   {% csrf_token %}
-                <div class="card-body">
+                <div class="card-body" style= "background-color: rgb(24, 24, 24);">
 
                     {% for field in form %}
-                  <div class="form-group">
-                      {{ field.errors }}
-                      {{ field.label_tag }}
-                      {{ field }}
-                  </div>
+                    <div class="form-group" >
+                        {{ field.errors }}
+                        {% if field.name == 'session_start' or field.name == 'session_end' %}
+                          <label class="custom-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {% elif field.name == 'profile_pic' %}
+                         <label class="custom-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {% endif %}
+                        {{ field }}
+                    </div>
                     {% endfor %}
 
                    <div class="form-group">
@@ -27,6 +31,6 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary btn-block">{{ button_text }}</button>
+                  <button type="submit" class="btn btn-primary btn-block mt-3">{{ button_text }}</button>
                 </div>
               </form>
