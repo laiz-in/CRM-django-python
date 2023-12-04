@@ -3,7 +3,7 @@
                 <div class="card-body" style= "background-color: rgb(24, 24, 24);">
 
                     {% for field in form %}
-                    <div class="form-group" >
+                    <div class="form-group " >
                         {{ field.errors }}
                         {% if field.name == 'session_start' or field.name == 'session_end' %}
                           <label class="custom-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -14,7 +14,7 @@
                     </div>
                     {% endfor %}
 
-                   <div class="form-group">
+                   {% comment %} <div class="form-group">
                       {% if messages %}
                         {% for message in messages %}
                         {% if message.tags == 'error' %}
@@ -25,7 +25,7 @@
                         {% endif %}
                         {% endfor %}
                       {% endif %}
-                    </div>
+                    </div> {% endcomment %}
 
                 </div>
                 <!-- /.card-body -->

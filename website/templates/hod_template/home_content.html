@@ -1,14 +1,15 @@
 {% extends 'hod_template/base_template.html' %}
 {% block content %}
 {% load static %}
+
 <div class="container">
-    <div class="row table-top align-items-center ">
-        <div class="col-md-6 p-0 mb-2" >
-            <h1>Hello <span class="gradient-text">Admin!</span></h1>
+    <div class="row table-top align-items-center mb-5 mt-2">
+        <div class="col-md-6 mb-2 p-xs-0 ps-md-0 ps-lg-0" >
+            <h1>Logged in as <span class="gradient-text">Admin</span></h1>
         </div >
-        <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-0">
+        <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-xs-0 ps-md-0 pe-lg-0">
           <div id="search" class="responsive-search-bar bg-dark pl-3">
-            <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
+            <input type="search" class="bg-dark ps-2" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
             <div class="search-button-container bg-dark" onclick="searchFunction()">
                     <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
                 </div>
@@ -16,49 +17,98 @@
         </div>
     </div>
   </div>
+
+
+  <div class="container count-details p-lg-0 p-md-0">
+    <div class="row mb-4 p-2 m-1 bg-dark" style="border-radius:10px; ">
+
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-4">
+            <h1><span class="gradient-text">{{ total_students }}</span> Students</h1>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-4">
+            <h1><span class="gradient-text">{{ total_staffs }}</span> Staffs</h1>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-4" >
+            <h1 ><span class="gradient-text">{{ total_courses }}</span> Departments</h1>
+        </div>
+
+    </div>
+</div>
+
  
 
   <div class="container">
     <div class="row">
-        <div class="col-md-3 ps-md-0 ps-lg-0 mb-3 p-xs-0">
+        <div class="col-md-3 ps-md-0 ps-lg-0 mb-3 p-xs-0 col-6" >
             <!-- Column 1 Content -->
-            <div class="card  ">
-                <div class="card-body bg-dark">
+            <div class="card hod-cards" >
+                <div class="card-body bg-dark text-center" >
+                    <img style="max-width:90px; margin-bottom:10px" src={% static "assets/student_icon.svg" %} alt="Icon">
                     <h5 class="card-title">View students</h5>
-                    <p class="card-text">Column 1 Content Goes Here.</p>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 mb-3 ">
+        <div class="col-md-3 mb-3 col-6">
             <!-- Column 2 Content -->
-            <div class="card">
-                <div class="card-body bg-dark ">
+            <div class="card hod-cards">
+                <div class="card-body bg-dark text-center">
+                    <img style="min-width:90px; margin-bottom:10px" src={% static "assets/staff_icon.svg" %} alt="Icon">
                     <h5 class="card-title">View staffs</h5>
-                    <p class="card-text">Column 2 Content Goes Here.</p>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 mb-3">
+        <div class="col-md-3 mb-3 col-6">
             <!-- Column 3 Content -->
-            <div class="card">
-                <div class="card-body bg-dark ">
-                    <h5 class="card-title">view attendance</h5>
-                    <p class="card-text">Column 3 Content Goes Here.</p>
+            <div class="card hod-cards">
+                <div class="card-body bg-dark text-center">
+                    <img style="max-width:92px; margin-bottom:10px" src={% static "assets/feedback_icon.svg" %} alt="Icon">
+
+                    <h5 class="card-title">Feedback management</h5>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3 col-6">
+            <!-- Column 3 Content -->
+            <div class="card hod-cards">
+                <div class="card-body bg-dark text-center ">
+                    <img style="max-width:92px; margin-bottom:10px" src={% static "assets/presence_icon.svg" %} alt="Icon">
+
+                    <h5 class="card-title">View attendance</h5>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 pe-md-0 pe-lg-0">
+        
+
+        <div class="col-md-3 mb-3 p-xs-0 ps-md-0 ps-lg-0 col-6">
+            <!-- Column 3 Content -->
+            <div class="card hod-cards">
+                <div class="card-body bg-dark text-center">
+                    
+                    <img style="min-width:90px; margin-bottom:10px" src={% static "assets/subject_icon.svg" %} alt="Icon">
+
+                    <h5 class="card-title" style="font-weight:700">subject management</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+        <a href="{% url 'add_course' %} " style="text-decoration:none">
+
           <!-- Column 3 Content -->
-          <div class="card">
-              <div class="card-body bg-dark">
-                  <h5 class="card-title">view assessments</h5>
-                  <p class="card-text">Column 4 Content Goes Here.</p>
+          <div class="card hod-cards">
+              <div class="card-body bg-dark text-center">
+                <img style="max-width:90px; margin-bottom:10px" src={% static "assets/course_icon.svg" %} alt="Icon">
+                <h5 class="card-title">Course management</h5>
               </div>
           </div>
-      </div>
+        </a>
+        </div>
 
     </div>
  </div>

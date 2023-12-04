@@ -4,7 +4,7 @@ class DateInput(forms.DateInput):
     input_type = "date"
 
 class AddStudentForm(forms.Form):
-    email=forms.EmailField(label=None,max_length=50,widget=forms.EmailInput(attrs={"class":"form-control custom-field-bg mb-2","placeholder": "Enter student email"}))
+    email=forms.EmailField(label=None,max_length=50,widget=forms.EmailInput(attrs={"class":"form-control custom-field-bg mb-2 ","placeholder": "Enter student email"}))
     password=forms.CharField(label=None,max_length=50,widget=forms.PasswordInput(attrs={"class":"form-control custom-field-bg mb-2","placeholder": "Enter student password"}))
     first_name=forms.CharField(label=None,max_length=50,widget=forms.TextInput(attrs={"class":"form-control custom-field-bg mb-2","placeholder": "Enter student first name"}))
     last_name=forms.CharField(label=None,max_length=50,widget=forms.TextInput(attrs={"class":"form-control custom-field-bg mb-2","placeholder": "Enter student last name"}))

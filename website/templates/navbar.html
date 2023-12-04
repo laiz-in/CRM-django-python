@@ -1,11 +1,14 @@
 {% load static %}
 
-<div class='container nav-container'>
-<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: rgb(24, 24, 24);">
-  <div class="container-fluid p-0">
+<div class='container nav-container fixed-top'>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(24, 24, 24);">
+  <div class="container-fluid ps-lg-0 ps-md-0 p-0">
     <a class="navbar-brand" href="{% url 'home' %}">
       <img src="{% static 'assets/logocrm.png' %}" alt="" class="navbar-logo">
+      <button class="login-btn btn-primary" href="home.html/#loginuser">Login</button>
+
    </a>
+  
   
    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -49,7 +52,7 @@
             <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">How to register</a>
+            <a class="nav-link" href="#" onclick="openPopup()">How to register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Blogspot</a>
@@ -60,6 +63,20 @@
         {% endif %}
 
       </ul>     
+    </div>
+  </div>
+
+  <div id="popup" class="popup-container" onclick="closePopup()">
+    <!-- Popup box -->
+    <div class="popup-box bg-warning">
+      <!-- Close button -->
+      <div class="popup-close ml-auto mb-2 ms-auto">
+      <button class="close-btn bg-danger text-light " onclick="closePopup()">X</button>
+      </div>
+      <div>
+      <p class ="text-dark" style="font-size:20px; font-weight:500;"> Only an admin can create staff account, kindly contact the authorities for your login credentials</p>
+    </div>
+
     </div>
   </div>
 </nav>

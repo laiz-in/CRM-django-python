@@ -1,56 +1,42 @@
-{% extends 'hod_template/base_template.html' %}
-{% block page_title %}
-Add Course
-{% endblock page_title %}
-{% block main_content %}
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Add Course</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form" action="/add_course_save" method="post">
-                  {% csrf_token %}
-                <div class="card-body">
-                  <div class="form-group">
-                    <label>Course Name </label>
-                    <input type="text" class="form-control" name="course" placeholder="Enter Course">
-                  </div>
-                   <div class="form-group">
-                      {% if messages %}
-                        {% for message in messages %}
-                        {% if message.tags == 'error' %}
-                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
-                        {% endif %}
-                        {% if message.tags == 'success' %}
-                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
-                        {% endif %}
-                        {% endfor %}
-                      {% endif %}
-                    </div>
+{% extends 'hod_template/home_content.html' %}
+{% block content %}
+{% load static %}
 
+<div class="container">
+    <div class="row table-top align-items-center ">
+        <div class="col-md-6 p-0">
+            <h1>Add a new Course</span></h1>
+        </div>
+        <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-0">
+          <div id="search" class="responsive-search-bar bg-dark pl-3">
+            <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
+            <div class="search-button-container bg-dark" onclick="searchFunction()">
+                    <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
                 </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary btn-block">Add Course</button>
-                </div>
-              </form>
             </div>
-            <!-- /.card -->
+        </div>
+    </div>
 
 
+    <div class = "row">
+      <div class="col-md-6 p-0 ">
 
+        <form role="form" action="/add_course_save" method="post">
+        {% csrf_token %}
+        <div class="card-body">
+          <div class="form-group">
+            <input type="text" class="form-control custom-field-bg" name="course" placeholder="Enter Course name">
           </div>
-          </div>
-      </div>
-    </section>
-    <!-- /.content -->
-{% endblock main_content %}
+     
+        </div>
+        <br>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary btn-block">Add Course</button>
+        </div>
+        </form>
+    </div> 
+</div>
+
+{% endblock %}
+
 

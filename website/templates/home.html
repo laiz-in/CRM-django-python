@@ -4,25 +4,37 @@
 {% load static %}
 
 
-<div class="container describeview">
+<div class="container describeview" >
   <div class="row">
+    {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == 'error' %}
+                  <div class="alert alert-danger mb-5" style="margin-top:10px; font-weight:500;font-size:25px;">{{ message }}</div>
+                {% endif %}
+                {% if message.tags == 'success' %}
+                 <div class="alert alert-success mb-5" style="margin-top:10px; font-weight:500;font-size:25px;">{{ message }}</div>
+                {% endif %}
+                {% endfor %}
+              {% endif %}
       <div class="col-md-6 order-lg-1 order-2">
           <!-- Left side - Information about your website -->
           <h1>A complete student management solution</h1>
           <br>
           <p>a comprehensive platform that simplifies student records and management. Our solution empowers you to create administrative accounts securely and efficiently store essential data, providing a centralized hub for managing students details, marks, perfomance details and more. With user-friendly interfaces and robust functionalities, our SRM enables seamless organization, analysis, and access to critical student informations</p>
       </div>
-      <div class="col-md-6 loginview order-lg-2 order-1">
+
+      <div class="col-md-6 loginview order-lg-2 order-1" id="loginuser">
           <!-- Right side - Login form -->
-          <div class="col-md-8 offset-md-2">
-              <h2 class=" "> login</h2>
-              <br>
+
+          <div class="col-md-8  offset-md-2 ">
+            <h2 class="mb-md-5 " style="font-size: 39px; padding:2px; margin-top:-45px; background-color: rgb(24, 24, 24);max-width:fit-content;"> login</h2>
+
               <form action="/doLogin/" method="post" >
                 {% csrf_token %}
-              <div class="custom-field-bg mb-3">
+              <div class=" mb-3">
                 <input type="email" class="form-control custom-field-bg" placeholder="Email" name="email" required >
               </div>
-              <div class="custom-field-bg mb-3">
+              <div class="mb-3">
                 <input type="password" class="form-control custom-field-bg" placeholder="Password" name="password" required >
               </div>
               <div class="row">
@@ -31,6 +43,7 @@
                   <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                 </div><!-- /.col -->
               </div>
+                
             </form>
           </div>
       </div>
@@ -82,14 +95,12 @@
   <!-- Footer -->
   <footer
           class="text-center footer text-lg-start text-white p-0"
-          style="border-radius: 10px;
-          background: linear-gradient(to right, rgb(10, 17, 16),rgb(18, 41, 41));"
-          >
-    
+          style="border: 2px solid green;
+                 border-radius:20px;">
 
     <!-- Section: Links  -->
     <section class="">
-      <div class="container text-center text-md-start mt-lg-5 p-md-5 mt-0">
+      <div class="container text-center text-md-start mt-lg-2 p-md-2 mt-0">
         <!-- Grid row -->
         <div class="row mt-3">
           <!-- Grid column -->

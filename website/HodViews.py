@@ -12,7 +12,15 @@ from .models import CustomUser, Staffs, Courses, Subjects, Students
 
 
 def admin_home(request):
-    return render(request,"hod_template/home_content.html")
+    courses=Courses.objects.all()
+    staffs=Staffs.objects.all()
+    students= Students.objects.all()
+    total_courses = Courses.objects.count()
+    total_staffs = Staffs.objects.count()
+    total_students = Students.objects.count()
+    return render(request,"hod_template/home_content.html",{"Courses":courses,"Staffs":staffs,"Students":students,"total_courses":total_courses,
+                                                            "total_students":total_students,
+                                                            "total_staffs":total_staffs})
 
 def add_staff(request):
     return render(request,"hod_template/add_staff_template.html")
