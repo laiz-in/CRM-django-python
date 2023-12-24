@@ -5,15 +5,7 @@
 <div class="container">
     <div class="row table-top align-items-center ">
         <div class="col-md-6 p-0">
-            <h1>Add a new Course</span></h1>
-        </div>
-        <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-0">
-          <div id="search" class="responsive-search-bar bg-dark pl-3">
-            <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
-            <div class="search-button-container bg-dark" onclick="searchFunction()">
-                    <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
-                </div>
-            </div>
+            <h1>Add a new department</span></h1>
         </div>
     </div>
 
@@ -22,17 +14,17 @@
       <div class="col-md-6 p-0 ">
 
         <form role="form" action="/add_course_save" method="post">
-        {% csrf_token %}
-        <div class="card-body">
-          <div class="form-group">
-            <input type="text" class="form-control custom-field-bg" name="course" placeholder="Enter Course name">
-          </div>
-     
-        </div>
-        <br>
-        <div class="card-footer">
-          <button type="submit" class="btn btn-primary btn-block">Add Course</button>
-        </div>
+                    {% csrf_token %}
+                    <div class="card-body">
+                      <div class="form-group">
+                        <input type="text" class="form-control custom-field-bg" name="course" placeholder="Enter Course name">
+                      </div>
+                
+                    </div>
+                    <br>
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary btn-block">Add Course</button>
+                    </div>
         </form>
     </div> 
 </div>

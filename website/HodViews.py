@@ -4,11 +4,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
-
 from .forms import AddStudentForm, EditStudentForm
 from .models import CustomUser, Staffs, Courses, Subjects, Students
+from django.contrib.auth.decorators import login_required
 
 
 def admin_home(request):
@@ -25,6 +25,23 @@ def admin_home(request):
 def add_staff(request):
     return render(request,"hod_template/add_staff_template.html")
 
+
+@login_required
+def delete_user(request, user_id):
+    if not request.user.is_staff:
+        messages.error(request,"Failed to delete ")
+        return HttpResponseRedirect(reverse("edit_student"))
+
+    user = get_object_or_404(CustomUser, id=user_id)
+
+    if request.method == 'POST':
+        user.delete()
+        messages.success(request,"Successfully deleted user")
+        return HttpResponseRedirect(reverse("manage_student"))
+    return HttpResponseRedirect(reverse("add_staff"))
+
+
+
 def add_staff_save(request):
     if request.method!="POST":
         return HttpResponse("Method Not Allowed")
@@ -35,15 +52,20 @@ def add_staff_save(request):
         email=request.POST.get("email")
         password=request.POST.get("password")
         address=request.POST.get("address")
+        
+        if CustomUser.objects.filter(username=username).exists() or CustomUser.objects.filter(email=email).exists():
+            messages.error(request, "Username or email is already taken. Please choose a different one.")
+            return HttpResponseRedirect(reverse("add_staff"))
+
         try:
             user=CustomUser.objects.create_user(username=username,password=password,email=email,last_name=last_name,first_name=first_name,user_type=2)
             user.staffs.address=address
             user.save()
             messages.success(request,"Successfully Added Staff")
-            return HttpResponseRedirect(reverse("add_staff"))
+            return HttpResponseRedirect(reverse("admin_home"))
         except:
             messages.error(request,"Failed to Add Staff")
-            return HttpResponseRedirect(reverse("add_staff"))
+            return HttpResponseRedirect(reverse("admin_home"))
 
 def add_course(request):
     return render(request,"hod_template/add_course_template.html")
@@ -88,6 +110,10 @@ def add_student_save(request):
             filename=fs.save(profile_pic.name,profile_pic)
             profile_pic_url=fs.url(filename)
 
+            if CustomUser.objects.filter(username=username).exists() or CustomUser.objects.filter(email=email).exists():
+                messages.error(request, "Username or email is already taken. Please choose a different one.")
+                return HttpResponseRedirect(reverse("add_student"))
+
             try:
                 user=CustomUser.objects.create_user(username=username,password=password,email=email,last_name=last_name,first_name=first_name,user_type=3)
                 user.students.address=address
@@ -98,8 +124,8 @@ def add_student_save(request):
                 user.students.gender=sex
                 user.students.profile_pic=profile_pic_url
                 user.save()
-                messages.success(request,"Successfully Added Student")
-                return HttpResponseRedirect(reverse("add_student"))
+                messages.success(request,"Successfully Added new Student")
+                return HttpResponseRedirect(reverse("admin_home"))
             except:
                 messages.error(request,"Failed to Add Student")
                 return HttpResponseRedirect(reverse("add_student"))

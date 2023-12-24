@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class='container nav-container p-0'>
-<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: rgb(24, 24, 24);">
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: black;">
   <div class="container-fluid ps-lg-0 ps-md-0">
     <a class="navbar-brand" href="{% url 'home' %}">
       <img src="{% static 'assets/logocrm.png' %}" alt="" class="navbar-logo">
@@ -25,12 +25,14 @@
           
           <li class="nav-item">
             {% url 'add_course' as add_course %}
-            <a class="nav-link {% if request.path == add_course %} active {% endif %}" href="{% url 'add_course' %}">Add courses</a>
+            <a class="nav-link {% if request.path == add_course %} active {% endif %}" href="{% url 'add_course' %}">Add department</a>
+          </li>
+          
+          <li class="nav-item">
+            {% url 'add_subject' as add_subject %}
+            <a class="nav-link {% if request.path == add_subject %} active {% endif %}" href="{% url 'add_subject' %}">Add subject</a>
           </li> 
 
-          <li class="nav-item mb-2">
-            <a class="nav-link" href="{% url 'home' %}">Register parent</a>
-          </li>     
 
 
           <li class="nav-item p-0 ">

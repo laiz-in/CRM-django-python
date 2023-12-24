@@ -8,9 +8,6 @@ from django.urls import reverse
 
 from website.EmailBackEnd import EmailBackEnd
 
-
-def showDemoPage(request):
-    return render(request, "demo.html")
 def home(request):
     if request.user.is_authenticated:
             # Redirect based on user type
@@ -31,7 +28,6 @@ def doLogin(request):
     if request.method!="POST":
         return HttpResponse("<h2>Method Not beacause it says , its not post</h2>")
     else:
-        print("====================== CAME TO DOLOGIN ++++++++++++++++++++++++++++++")
         user=EmailBackEnd.authenticate(request,username=request.POST.get("email"),password=request.POST.get("password"))
         if user!=None:
             login(request,user)
@@ -42,7 +38,7 @@ def doLogin(request):
             else:
                 return HttpResponseRedirect(reverse("student_home"))
         else:
-            messages.error(request,"Invalid Login Details")
+            messages.error(request,"Invalid login details. please try again!")
             return HttpResponseRedirect(reverse("home"))
 
 

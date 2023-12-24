@@ -2,12 +2,12 @@
     text-decoration: none;
   }
 .navbar-logo{
-    max-height: 60px;
+    max-height:70px;
     vertical-align: middle;
     margin-right: 10px;
 }
 .describeview h1{
-    font-weight: 700;
+    font-weight: 800!important;
     font-size: 40px;
     background-image: linear-gradient(to right,green, rgb(91, 160, 91));
     -webkit-background-clip: text;
@@ -19,8 +19,8 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-}
 
+}
 /*======================================================== CARD ===============================================================*/
 .card {
     background-color: rgb(175, 69, 17) !important;
@@ -52,20 +52,26 @@
     padding-top: 116px;
 }
 .describeview .loginview{
-    /* background: linear-gradient(to right, rgb(10, 17, 16),rgb(18, 41, 41)); */
     border: 2px solid green;
     margin-right: 0px;
     padding: 10px;
     border-radius: 20px;
 }
-.table-data tr:nth-child(even) td {
-    background-color: #292727 !important;
-    font-size: small;
+
+/*======================================================== TABLE STARTS ===========================================================*/
+
+  .table td{
+    color: rgb(179, 177, 177)!important;
+    vertical-align: middle;
   }
-  .table-data tr:nth-child(odd) td {
-    background-color:black !important;
-    font-size: small;
-  }
+   
+  
+  /*======================================================== TABLE ENDS ===========================================================*/
+.table td a{
+    text-decoration: none;
+    color: #b9b8b8;
+    font-weight: 600;
+}
 .describeview p{
     text-wrap:pretty;
     padding-right: 18px;
@@ -100,25 +106,10 @@
     background-color: rgb(223, 58, 8); 
     color: rgb(255, 255, 255);
 }
-.table-data{
-    color: #cecace !important;
-    background-color:rgb(43, 42, 42) !important;
-
-}
-.table-data td a,.table-data td a:link{
-    text-decoration: none !important;
-    color: #cecace !important;
-}
-.table-data td a:hover{
-    color: rgb(252, 250, 250) !important;
-}
-.table-data td,tr{
-    background-color:rgb(66, 63, 63) !important;
-    border: none !important;
-}
 body{
-    background-color: rgb(24, 24, 24) !important;
+    background-color: black!important;
     color: rgb(221, 220, 219) !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 /*================================================================   CARD  =============================================*/
 .feature-cards .single-card{
@@ -183,7 +174,18 @@ body{
     width: 35px;
     border-radius: 5px;
 }
+.custom-select {
+    position: relative;
+    display: inline-block;
+}
 
+.arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the right distance as needed */
+    transform: translateY(-50%);
+    pointer-events: none;
+}
 .search-button {
     width: 23px; /* Adjust width as needed */
     height: 23px; /* Adjust height as needed */
@@ -195,6 +197,7 @@ body{
     background-color: #ceccce !important;
     font-size: 19px !important;
     color: #979595 ;
+    font-weight: 600 !important;
     border-radius: 7px;
     height: 50px;
 }
@@ -222,19 +225,24 @@ body{
     justify-content: center;
     align-items: center;
   }
+  .big-number h1{
+    font-size: 138px;
+    font-weight: 900;
+    padding: 0;
+    align-items: end;
+    color: #3a3939;
+  }
   .hod-cards{
     background: transparent !important;
   }
   .hod-cards .card-body{
-    border-radius: 7px;
+    border-radius: 50px;
     cursor: pointer;
     border: 2px solid transparent;
 
   }
   .hod-cards .card-body:hover{
-    border: 2px solid green;
-    background-color: #333232;
-  
+    background-color: #3a3939 !important;  
   }
   
   /* Styles for the popup box */
@@ -269,6 +277,9 @@ body{
     .describeview{
         padding-top: 56px;
     }
+    .phoneimage{
+        max-width: 50px;
+    }
     .gradient-text-icon{
         font-size: 20px;
     }
@@ -281,9 +292,18 @@ body{
     .table-top h1{
         font-size: 35px;
     }
+
+    .big-number h1{
+        font-size: 68px;
+      }
+      .big-number h4{
+        font-size: 18px;
+      }
     .describeview h1{
         padding-top: 8px;
         font-size: 30px;
+        font-weight: 600 !important;
+    
     }
     .describeview .loginview h2{
         display: none;
@@ -292,6 +312,13 @@ body{
         text-wrap:pretty;
         font-size: 15px;
        
+    }
+    .card-header h3{
+        font-size: 15px;
+    }
+    .handy img{
+        max-width: 80vw;
+        align-items: end;
     }
     .login-btn{
         background: rgb(14, 94, 214);
@@ -302,8 +329,11 @@ body{
         height: 28px;
         font-size: 15px;
     }
+    .main-menu img,svg{
+        max-width: 30px !important;
+    }
     .count-details h1 {
-        font-size: 10px;
+        font-size: 11px;
     }
     .count-details .gradient-text{
         font-size: 15px;

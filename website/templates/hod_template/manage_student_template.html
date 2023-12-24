@@ -1,67 +1,62 @@
-{% extends 'hod_template/base_template.html' %}
-{% block page_title %}
-Manage Student
-{% endblock page_title %}
-{% block main_content %}
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
+{% extends 'hod_template/home_content.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+  <div class="row table-top align-items-center mb-5 mt-2">
+      <div class="col-md-6 mb-2 p-xs-0 ps-md-0 ps-lg-0" >
+          <h1>Logged in as <span class="gradient-text">Admin </span></h1>
 
-
-           <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Student Details</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
-                  </div>
-                </div>
+      </div >
+      <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-xs-0 ps-md-0 pe-lg-0">
+        <div id="search" class="responsive-search-bar bg-dark pl-3">
+          <input type="search" class="bg-dark ps-2" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
+          <div class="search-button-container bg-dark" onclick="searchFunction()">
+                  <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
               </div>
+          </div>
+      </div>
+  </div>
+</div>
+    <!-- Main content -->
+    <div class="container p-lg-0 p-md-0 table-content">
+      <div class="container-fluid p-lg-0 p-md-0">
+
+          <div class="row">
+          <div class="col-12 p-0">
+            <h6 class="mb-3">Admin / manage students</h6>
+            <div class="card">
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
+                <table class="table table-dark table-striped text-nowrap">
+                  <thead class="text-white ">
                     <tr>
                       <th>ID</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
+                      <th>Name</th>
                       <th>User Name</th>
                       <th>Email</th>
                       <th>Address</th>
                       <th>Gender</th>
-                      <th>Profile Pic</th>
                       <th>Start Year</th>
                       <th>End Year</th>
                       <th>Course</th>
                       <th>Last Login</th>
                       <th>Date Joined</th>
-                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                   {% for student in students %}
-                    <tr>
-                      <td>{{ student.admin.id }}</td>
-                      <td>{{ student.admin.first_name }}</td>
-                      <td>{{ student.admin.last_name }}</td>
+                    <tr>                    
+                      <td class="p-3">{{ student.admin.id }}</td>
+                      <td class="student-name"><a href="{% url 'edit_student' student_id=student.admin.id %}">{{ student.admin.first_name}} {{ student.admin.last_name }}</a></td>
                       <td>{{ student.admin.username }}</td>
                       <td>{{ student.admin.email }}</td>
                       <td>{{ student.address }}</td>
                       <td>{{ student.gender }}</td>
-                      <td><img src="{{ student.profile_pic }}" style="width:100px"/></td>
                       <td>{{ student.session_start_year }}</td>
                       <td>{{ student.session_end_year }}</td>
                       <td>{{ student.course_id.course_name }}</td>
                       <td>{{ student.admin.last_login }}</td>
                       <td>{{ student.admin.date_joined }}</td>
-                      <td><a href="{% url 'edit_student' student_id=student.admin.id %}" class="btn btn-success">Edit</a></td>
                     </tr>
                   {% endfor %}
                   </tbody>
@@ -73,7 +68,7 @@ Manage Student
           </div>
         </div>
       </div>
-    </section>
+    </div>
     <!-- /.content -->
-{% endblock main_content %}
+{% endblock  %}
 

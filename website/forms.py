@@ -26,9 +26,9 @@ class AddStudentForm(forms.Form):
 
     course=forms.ChoiceField(label=None,choices=course_list,widget=forms.Select(attrs={"class":"form-control custom-field-bg mb-2","placeholder": "select the course"}))
     sex=forms.ChoiceField(label=None,choices=gender_choice,widget=forms.Select(attrs={"class":"form-control custom-field-bg mb-2 ","placeholder": "gender"}))
-    session_start=forms.DateField(label="Session start ",widget=DateInput(attrs={"class":"form-control mb-2 custom-field-bg w-50  "}))
-    session_end=forms.DateField(label="Session end ",widget=DateInput(attrs={"class":"form-control mb-2 custom-field-bg w-50"}))
-    profile_pic=forms.FileField(label="Choose profile picture",max_length=50,widget=forms.FileInput(attrs={"class":"form-control w-50 custom-field-bg mb-2","placeholder": "choose the photo"}))
+    session_start=forms.DateField(label="Session start ",widget=DateInput(attrs={"class":"form-control mb-2 custom-field-bg "}))
+    session_end=forms.DateField(label="Session end ",widget=DateInput(attrs={"class":"form-control mb-2 custom-field-bg"}))
+    profile_pic=forms.FileField(label="Choose profile picture",max_length=50,widget=forms.FileInput(attrs={"class":"form-control custom-field-bg mb-2","placeholder": "choose the photo"}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -2,7 +2,9 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+from decouple import config, Csv
 
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -13,7 +15,7 @@ SECRET_KEY = 'django-insecure-jcxge@8cwms-4-$&qia^6p+^8-qwrsw7vey#0e6e326apg3mvo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.198']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.200']
 
 AUTH_USER_MODEL = "website.CustomUser"
 AUTHENTICATION_BACKENDS=['website.EmailBackEnd.EmailBackEnd']
@@ -73,7 +75,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'crmwebapp',
         'USER': 'root',
-        'PASSWORD': 'dev123!@#&*(',
+        'PASSWORD': config('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -117,6 +119,8 @@ ADMIN_URL = 'admin/'
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

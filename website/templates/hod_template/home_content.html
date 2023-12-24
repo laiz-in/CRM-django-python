@@ -5,22 +5,31 @@
 <div class="container">
     <div class="row table-top align-items-center mb-5 mt-2">
         <div class="col-md-6 mb-2 p-xs-0 ps-md-0 ps-lg-0" >
-            <h1>Logged in as <span class="gradient-text">Admin</span></h1>
+            <h1 style="font-weight:600">Logged in as <span class="gradient-text" style="font-weight:600">Admin</span></h1>
         </div >
-        <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-xs-0 ps-md-0 pe-lg-0">
-          <div id="search" class="responsive-search-bar bg-dark pl-3">
-            <input type="search" class="bg-dark ps-2" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
-            <div class="search-button-container bg-dark" onclick="searchFunction()">
-                    <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
-                </div>
-            </div>
-        </div>
+       
     </div>
   </div>
 
+  <div class="container">
+    <div class="row">
+    <div class="col-12">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger" style="margin-top:10px;font-weight:600 !important;">{{ message }}</div>
+        {% endif %}
+        {% if message.tags == 'success' %}
+        <div class="alert alert-success" style="margin-top:10px;font-weight:600">{{ message }}</div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    </div>
+  </div>
 
   <div class="container count-details p-lg-0 p-md-0">
-    <div class="row mb-4 p-2 m-1 bg-dark" style="border-radius:10px; ">
+    <div class="row mb-4 p-2 m-1 bg-dark" style="border-radius:30px; ">
 
         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-4">
             <h1><span class="gradient-text">{{ total_students }}</span> Students</h1>
@@ -40,25 +49,30 @@
  
 
   <div class="container">
-    <div class="row">
+    <div class="row main-menu">
         <div class="col-md-3 ps-md-0 ps-lg-0 mb-3 p-xs-0 col-6" >
             <!-- Column 1 Content -->
+            <a href="{% url 'manage_student' %} " style="text-decoration:none">
             <div class="card hod-cards" >
                 <div class="card-body bg-dark text-center" >
                     <img style="max-width:90px; margin-bottom:10px" src={% static "assets/student_icon.svg" %} alt="Icon">
-                    <h5 class="card-title">View students</h5>
+                    <h5 class="card-title heads">View students</h5>
                 </div>
             </div>
+            </a>
         </div>
 
         <div class="col-md-3 mb-3 col-6">
             <!-- Column 2 Content -->
+            <a href="{% url 'manage_staff' %} " style="text-decoration:none">
+
             <div class="card hod-cards">
                 <div class="card-body bg-dark text-center">
-                    <img style="min-width:90px; margin-bottom:10px" src={% static "assets/staff_icon.svg" %} alt="Icon">
-                    <h5 class="card-title">View staffs</h5>
+                    <img style="width:90px; margin-bottom:10px" src={% static "assets/staff_icon.svg" %} alt="Icon">
+                    <h5 class="card-title heads ">View staffs</h5>
                 </div>
             </div>
+            </a>
         </div>
 
         <div class="col-md-3 mb-3 col-6">
@@ -67,7 +81,7 @@
                 <div class="card-body bg-dark text-center">
                     <img style="max-width:92px; margin-bottom:10px" src={% static "assets/feedback_icon.svg" %} alt="Icon">
 
-                    <h5 class="card-title">Feedback management</h5>
+                    <h5 class="card-title heads">Feedback system</h5>
               </div>
             </div>
         </div>
@@ -78,7 +92,7 @@
                 <div class="card-body bg-dark text-center ">
                     <img style="max-width:92px; margin-bottom:10px" src={% static "assets/presence_icon.svg" %} alt="Icon">
 
-                    <h5 class="card-title">View attendance</h5>
+                    <h5 class="card-title heads">View attendance</h5>
                 </div>
             </div>
         </div>
@@ -90,9 +104,9 @@
             <div class="card hod-cards">
                 <div class="card-body bg-dark text-center">
                     
-                    <img style="min-width:90px; margin-bottom:10px" src={% static "assets/subject_icon.svg" %} alt="Icon">
+                    <img style="width:90px; margin-bottom:10px" src={% static "assets/subject_icon.svg" %} alt="Icon">
 
-                    <h5 class="card-title" style="font-weight:700">subject management</h5>
+                    <h5 class="card-title heads">subjects</h5>
                 </div>
             </div>
         </div>
@@ -104,7 +118,7 @@
           <div class="card hod-cards">
               <div class="card-body bg-dark text-center">
                 <img style="max-width:90px; margin-bottom:10px" src={% static "assets/course_icon.svg" %} alt="Icon">
-                <h5 class="card-title">Course management</h5>
+                <h5 class="card-title heads">Departments</h5>
               </div>
           </div>
         </a>

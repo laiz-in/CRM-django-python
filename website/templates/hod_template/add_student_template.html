@@ -6,19 +6,28 @@
         <div class="col-md-6 ps-lg-0 pe-lg-0 ps-md-0 ps-lg-0">
             <h1>Add a new student</span></h1>
         </div>
-        <div class="col-md-6 d-flex justify-content-start justify-content-md-end  pe-lg-0 ps-md-0 ps-lg-0">
-          <div id="search" class="responsive-search-bar bg-dark pl-3">
-            <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
-            <div class="search-button-container bg-dark" onclick="searchFunction()">
-                    <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
-                </div>
-            </div>
-        </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 p-0">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div class="alert alert-danger" style="margin-top:10px;font-weight:600 !important;">{{ message }}</div>
+            {% endif %}
+            {% if message.tags == 'success' %}
+            <div class="alert alert-success" style="margin-top:10px;font-weight:600">{{ message }}</div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </div>
+        </div>
+      </div>
 
     <div class="container pe-lg-0 ps-md-0 ps-lg-0">
     <div class = "row ">
-      <div class="col-md-6  ">
+      <div class="col-md-6">
         {% url 'add_student_save' as action_path %}
         {% include 'hod_template/form_template.html' with messages=messages form=form action_path=action_path button_text="Add Student" %}
     </div>

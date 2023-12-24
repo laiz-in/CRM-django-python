@@ -1,36 +1,25 @@
  <form role="form" action="{{ action_path }}" method="post" enctype="multipart/form-data">
                   {% csrf_token %}
-                <div class="card-body" style= "background-color: rgb(24, 24, 24);">
+                <div class="card-body p-0" style= "background-color:black;">
 
+                  <div class="row">
                     {% for field in form %}
-                    <div class="form-group " >
-                        {{ field.errors }}
-                        {% if field.name == 'session_start' or field.name == 'session_end' %}
-                          <label class="custom-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        {% elif field.name == 'profile_pic' %}
-                         <label class="custom-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        {% endif %}
-                        {{ field }}
-                    </div>
+                        <div class="col-lg-6 "> <!-- Use col-md-6 for medium screens -->
+                            <div class="form-group p-0 mb-2 mt-2 " >
+                                {{ field.errors }}
+                                <label class="custom-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                        </div>
                     {% endfor %}
-
-                   {% comment %} <div class="form-group">
-                      {% if messages %}
-                        {% for message in messages %}
-                        {% if message.tags == 'error' %}
-                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
-                        {% endif %}
-                        {% if message.tags == 'success' %}
-                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
-                        {% endif %}
-                        {% endfor %}
-                      {% endif %}
-                    </div> {% endcomment %}
+                </div>
 
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary btn-block mt-3">{{ button_text }}</button>
+                <div class="card-footer p-0 row">
+                  <div class="col-md-6 col-lg-6 col-12">
+                  <button style="height:50px" type="submit" class="btn btn-primary btn-block mt-3 w-50">{{ button_text }}</button>
+                  </div>
                 </div>
               </form>

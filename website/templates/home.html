@@ -18,7 +18,7 @@
               {% endif %}
       <div class="col-md-6 order-lg-1 order-2">
           <!-- Left side - Information about your website -->
-          <h1>A complete student management solution</h1>
+          <h1 >A complete student management solution</h1>
           <br>
           <p>a comprehensive platform that simplifies student records and management. Our solution empowers you to create administrative accounts securely and efficiently store essential data, providing a centralized hub for managing students details, marks, perfomance details and more. With user-friendly interfaces and robust functionalities, our SRM enables seamless organization, analysis, and access to critical student informations</p>
       </div>
@@ -27,7 +27,7 @@
           <!-- Right side - Login form -->
 
           <div class="col-md-8  offset-md-2 ">
-            <h2 class="mb-md-5 " style="font-size: 39px; padding:2px; margin-top:-45px; background-color: rgb(24, 24, 24);max-width:fit-content;"> login</h2>
+            <h2 class="mb-md-5 " style="font-size: 39px; padding:2px; margin-top:-45px; background-color:black;max-width:fit-content;"> login</h2>
 
               <form action="/doLogin/" method="post" >
                 {% csrf_token %}
@@ -86,8 +86,45 @@
 </div>
 
 
-<br>
+<div class="container ">
+  <div class="row">
+      <div class="col-md-6 col-lg-6 col-12 ">
 
+        <div class="row mb-3">
+          <div class="col-2 big-number">
+            <h1>1</h1>
+          </div>
+          <div class="col-6 d-flex align-items-center big-number">
+            <h4>Its handy ! so easy to use with mobiles</h4>
+          </div>
+        </div>
+         
+        <div class="row mb-3">
+          <div class="col-2 big-number">
+            <h1 class="p-0 m-0">2</h1>
+          </div>
+          <div class="col-6 d-flex align-items-center big-number">
+            <h4>Cost-Effective Development!
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2 big-number">
+            <h1>3</h1>
+          </div>
+          <div class="col-6 d-flex align-items-center big-number">
+            <h4>Social Media Friendliness !</h4>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-md-6 col-lg-6 col-sm-6 col-12 phoneimage">
+        <img src="{% static 'assets/phone.png' %}" alt="Description of the image">
+      </div>
+  </div>
+</div>
 
 
 <div class="container my-5 p-0 " id="footersection">
@@ -106,15 +143,14 @@
           <!-- Grid column -->
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
-            <h6 class="text-uppercase fw-bold">Company name</h6>
+            <h6 class="text-uppercase fw-bold">Institution database management </h6>
             <hr
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
             <p>
-              Here you can use rows and columns to organize your footer
-              content. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit.
+              A database of structured collection of data that efficiently organizes and manages
+               information related to students, faculty, courses, and administrative processes within an educational institution
             </p>
           </div>
           <!-- Grid column -->
@@ -122,45 +158,43 @@
           <!-- Grid column -->
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
             <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Products</h6>
+            <h6 class="text-uppercase fw-bold">Tech stack</h6>
             <hr
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
             <p>
-              <a href="#!" class="text-white">MDBootstrap</a>
+              <a href="#!" class="text-white">Django</a>
             </p>
             <p>
-              <a href="#!" class="text-white">MDWordPress</a>
+              <a href="#!" class="text-white">Python v3.8</a>
             </p>
             <p>
-              <a href="#!" class="text-white">BrandFlow</a>
+              <a href="#!" class="text-white">MySQL</a>
             </p>
-            <p>
-              <a href="#!" class="text-white">Bootstrap Angular</a>
-            </p>
+            
           </div>
           <!-- Grid column -->
 
           <!-- Grid column -->
           <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
             <!-- Links -->
-            <h6 class="text-uppercase fw-bold">Useful links</h6>
+            <h6 class="text-uppercase fw-bold">Social links</h6>
             <hr
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
             <p>
-              <a href="#!" class="text-white">Your Account</a>
+              <a href="#!" class="text-white">Github</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Become an Affiliate</a>
+              <a href="#!" class="text-white">Email</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Shipping Rates</a>
+              <a href="#!" class="text-white">Instagram</a>
             </p>
             <p>
-              <a href="#!" class="text-white">Help</a>
+              <a href="#!" class="text-white">Facebook</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -173,10 +207,12 @@
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
-            <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-            <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
-            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                <p><i class="fas fa-home mr-3"></i>Laizin V</p>
+
+            <p><i class="fas fa-home mr-3"></i> khalidiyyah, abudhabi - UAE</p>
+            <p><i class="fas fa-envelope mr-3"></i> laizin2107@gmail.com.com</p>
+            <p><i class="fas fa-phone mr-3"></i> + 971 503349730</p>
+            <p><i class="fas fa-print mr-3"></i> + 91 8113937942</p>
           </div>
           <!-- Grid column -->
         </div>
@@ -190,9 +226,9 @@
          class="text-center p-3"
          style="background-color: rgba(0, 0, 0, 0.2)"
          >
-      © 2020 Copyright:
+      © 2023 Copyright:
       <a class="text-white" href="https://mdbootstrap.com/"
-         >studentdatamanager.com</a
+         >dataedu.com</a
         >
     </div>
     <!-- Copyright -->
