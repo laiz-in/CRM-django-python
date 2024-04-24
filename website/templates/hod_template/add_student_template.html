@@ -9,7 +9,7 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="row ">
         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 p-0">
             {% if messages %}
             {% for message in messages %}
@@ -27,7 +27,7 @@
 
     <div class="container pe-lg-0 ps-md-0 ps-lg-0">
     <div class = "row ">
-      <div class="col-md-6">
+      <div class="col-md-6 col-12 col-lg-12">
         {% url 'add_student_save' as action_path %}
         {% include 'hod_template/form_template.html' with messages=messages form=form action_path=action_path button_text="Add Student" %}
     </div>

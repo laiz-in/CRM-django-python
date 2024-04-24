@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from .forms import AddStudentForm, EditStudentForm
-from .models import CustomUser, Staffs, Courses, Subjects, Students
+from .models import CustomUser, Staffs, Courses, Subjects, Students, FeedBackStaffs,FeedBackStudent
 from django.contrib.auth.decorators import login_required
 
 
@@ -29,17 +29,31 @@ def add_staff(request):
 @login_required
 def delete_user(request, user_id):
     if not request.user.is_staff:
-        messages.error(request,"Failed to delete ")
-        return HttpResponseRedirect(reverse("edit_student"))
+        messages.error(request,"FAILED")
+        return HttpResponseRedirect(reverse("admin_home"))
 
     user = get_object_or_404(CustomUser, id=user_id)
 
     if request.method == 'POST':
         user.delete()
-        messages.success(request,"Successfully deleted user")
-        return HttpResponseRedirect(reverse("manage_student"))
+        messages.success(request,"User has been deleted")
+        return HttpResponseRedirect(reverse("admin_home"))
     return HttpResponseRedirect(reverse("add_staff"))
 
+@login_required
+def delete_department(request, course_id):
+    if not request.user.is_staff:
+        messages.error(request, "FAILED")
+        return HttpResponseRedirect(reverse("admin_home"))
+
+    department = get_object_or_404(Courses, id= course_id)
+
+    if request.method == 'POST':
+        department.delete()
+        messages.success(request, "Department has been deleted")
+        return HttpResponseRedirect(reverse("admin_home"))
+    
+    return HttpResponseRedirect(reverse("admin_home"))
 
 
 def add_staff_save(request):
@@ -50,9 +64,18 @@ def add_staff_save(request):
         last_name=request.POST.get("last_name")
         username=request.POST.get("username")
         email=request.POST.get("email")
-        password=request.POST.get("password")
+        password1=request.POST.get("password1")
+        password2=request.POST.get("password2")
+
         address=request.POST.get("address")
         
+        if password1 != password2:
+            messages.error(request, "Passwords are not matching . please try again")
+            return HttpResponseRedirect(reverse("add_staff"))
+        else:
+            password=password1
+
+
         if CustomUser.objects.filter(username=username).exists() or CustomUser.objects.filter(email=email).exists():
             messages.error(request, "Username or email is already taken. Please choose a different one.")
             return HttpResponseRedirect(reverse("add_staff"))
@@ -98,17 +121,29 @@ def add_student_save(request):
             last_name=form.cleaned_data["last_name"]
             username=form.cleaned_data["username"]
             email=form.cleaned_data["email"]
-            password=form.cleaned_data["password"]
+            password1=form.cleaned_data["password"]
+            password2=form.cleaned_data["Confirm_password"]
+
             address=form.cleaned_data["address"]
             session_start=form.cleaned_data["session_start"]
             session_end=form.cleaned_data["session_end"]
+            dob=form.cleaned_data["dob"]
             course_id=form.cleaned_data["course"]
             sex=form.cleaned_data["sex"]
+            blood_group=form.cleaned_data["blood_group"]
+            referal_code=form.cleaned_data["referal_code"]
+
 
             profile_pic=request.FILES['profile_pic']
             fs=FileSystemStorage()
             filename=fs.save(profile_pic.name,profile_pic)
             profile_pic_url=fs.url(filename)
+
+            if password1!=password2:
+                messages.error(request, "Passwords are not matching . please try again")
+                return HttpResponseRedirect(reverse("add_student"))
+            else:
+                password = password1
 
             if CustomUser.objects.filter(username=username).exists() or CustomUser.objects.filter(email=email).exists():
                 messages.error(request, "Username or email is already taken. Please choose a different one.")
@@ -119,9 +154,12 @@ def add_student_save(request):
                 user.students.address=address
                 course_obj=Courses.objects.get(id=course_id)
                 user.students.course_id=course_obj
+                user.students.dob=dob
                 user.students.session_start_year=session_start
                 user.students.session_end_year=session_end
                 user.students.gender=sex
+                user.students.blood_group=blood_group
+                user.students.referal_code=referal_code
                 user.students.profile_pic=profile_pic_url
                 user.save()
                 messages.success(request,"Successfully Added new Student")
@@ -136,7 +174,7 @@ def add_student_save(request):
 
 def add_subject(request):
     courses=Courses.objects.all()
-    staffs=CustomUser.objects.filter(user_type=2)
+    staffs = CustomUser.objects.filter(user_type=2)
     return render(request,"hod_template/add_subject_template.html",{"staffs":staffs,"courses":courses})
 
 def add_subject_save(request):
@@ -163,13 +201,18 @@ def manage_staff(request):
     staffs=Staffs.objects.all()
     return render(request,"hod_template/manage_staff_template.html",{"staffs":staffs})
 
+def manage_feedbacks(request):
+    FeedBackStudents = FeedBackStudent.objects.all()
+    FeedBackStaff = FeedBackStaffs.objects.all()
+    return render(request,"hod_template/manage_feedback_template.html",{"FeedBackStudent":FeedBackStudents, "FeedBackStaff":FeedBackStaff})
+
 def manage_student(request):
     students=Students.objects.all()
     return render(request,"hod_template/manage_student_template.html",{"students":students})
 
-def manage_course(request):
+def manage_departments(request):
     courses=Courses.objects.all()
-    return render(request,"hod_template/manage_course_template.html",{"courses":courses})
+    return render(request,"hod_template/manage_departments_template.html",{"courses":courses})
 
 def manage_subject(request):
     subjects=Subjects.objects.all()
@@ -210,6 +253,7 @@ def edit_staff_save(request):
 def edit_student(request,student_id):
     request.session['student_id']=student_id
     student=Students.objects.get(admin=student_id)
+    profile_pic = student.profile_pic.url
     form=EditStudentForm()
     form.fields['email'].initial=student.admin.email
     form.fields['first_name'].initial=student.admin.first_name
@@ -220,7 +264,8 @@ def edit_student(request,student_id):
     form.fields['sex'].initial=student.gender
     form.fields['session_start'].initial=student.session_start_year
     form.fields['session_end'].initial=student.session_end_year
-    return render(request,"hod_template/edit_student_template.html",{"form":form,"id":student_id,"username":student.admin.username})
+    print(type(profile_pic))
+    return render(request,"hod_template/edit_student_template.html",{"form":form,"id":student_id,"profile_pic":"profileImages"+profile_pic,"username":student.admin.username})
 
 def edit_student_save(request):
     if request.method!="POST":
@@ -270,15 +315,15 @@ def edit_student_save(request):
                     student.profile_pic=profile_pic_url
                 student.save()
                 del request.session['student_id']
-                messages.success(request,"Successfully Edited Student")
-                return HttpResponseRedirect(reverse("edit_student",kwargs={"student_id":student_id}))
+                messages.info(request,"Successfully edited Student")
+                return HttpResponseRedirect(reverse("manage_student"))
             except:
                 messages.error(request,"Failed to Edit Student")
                 return HttpResponseRedirect(reverse("edit_student",kwargs={"student_id":student_id}))
         else:
             form=EditStudentForm(request.POST)
             student=Students.objects.get(admin=student_id)
-            return render(request,"hod_template/edit_student_template.html",{"form":form,"id":student_id,"username":student.admin.username})
+            return render(request,"hod_template/edit_student_template.html",{"form":form,"id":student_id,"profile_pic":profile_pic_url,"username":student.admin.username})
 
 def edit_subject(request,subject_id):
     subject=Subjects.objects.get(id=subject_id)
@@ -311,11 +356,13 @@ def edit_subject_save(request):
             return HttpResponseRedirect(reverse("edit_subject",kwargs={"subject_id":subject_id}))
 
 
-def edit_course(request,course_id):
-    course=Courses.objects.get(id=course_id)
-    return render(request,"hod_template/edit_course_template.html",{"course":course,"id":course_id})
+def edit_department(request,course_id):
+    course = get_object_or_404(Courses, id=course_id)
+    context = {"course": course, "id": course_id}
 
-def edit_course_save(request):
+    return render(request, "hod_template/edit_department.html", context)
+
+def edit_department_save(request):
     if request.method!="POST":
         return HttpResponse("<h2>Method Not Allowed</h2>")
     else:
@@ -327,8 +374,10 @@ def edit_course_save(request):
             course.course_name=course_name
             course.save()
             messages.success(request,"Successfully Edited Course")
-            return HttpResponseRedirect(reverse("edit_course",kwargs={"course_id":course_id}))
+            return HttpResponseRedirect(reverse("edit_department",kwargs={"course_id":course_id}))
         except:
             messages.error(request,"Failed to Edit Course")
-            return HttpResponseRedirect(reverse("edit_course",kwargs={"course_id":course_id}))
+            return HttpResponseRedirect(reverse("edit_department",kwargs={"course_id":course_id}))
 
+
+   

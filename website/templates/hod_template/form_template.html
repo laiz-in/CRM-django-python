@@ -1,25 +1,22 @@
  <form role="form" action="{{ action_path }}" method="post" enctype="multipart/form-data">
-                  {% csrf_token %}
-                <div class="card-body p-0" style= "background-color:black;">
-
-                  <div class="row">
-                    {% for field in form %}
-                        <div class="col-lg-6 "> <!-- Use col-md-6 for medium screens -->
-                            <div class="form-group p-0 mb-2 mt-2 " >
-                                {{ field.errors }}
-                                <label class="custom-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                                {{ field }}
-                            </div>
+    {% csrf_token %}
+      <div class="card-body p-0" style= "background-color:black;">
+          <div class="row ">
+                  {% for field in form %}
+                    <div class="col-lg-4 "> <!-- Use col-md-6 for medium screens -->
+                        <div class="form-group p-0 mb-2 mt-2 " >
+                            {{ field.errors }}
+                            <label class="custom-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
                         </div>
-                    {% endfor %}
-                </div>
-
-                </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer p-0 row">
-                  <div class="col-md-6 col-lg-6 col-12">
-                  <button style="height:50px" type="submit" class="btn btn-primary btn-block mt-3 w-50">{{ button_text }}</button>
+                    </div>
+                  {% endfor %}
+                  <div class="row mt-2">
+                    <div class="col-md-12 col-lg-12 col-12 ">
+                      <button type="submit" class="btn btn-primary btn-lg btn-block">{{ button_text }}</button>
+                                      
+                    </div>
                   </div>
-                </div>
-              </form>
+          </div>
+      </div>
+</form>

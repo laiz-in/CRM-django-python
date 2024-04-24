@@ -1,62 +1,58 @@
+
 .navbar-toggler:focus, .navbar-toggler:active{
     text-decoration: none;
+    color: transparent;
   }
 .navbar-logo{
-    max-height:70px;
+    max-height:90px;
     vertical-align: middle;
     margin-right: 10px;
 }
+.nav-link{
+    color: transparent;
+}
+/*=======================================================      MAIN HOME PAGE STARTS     ====================================================================*/
+.describeview{
+    padding-top: 129px;
+}
 .describeview h1{
-    font-weight: 800!important;
-    font-size: 40px;
-    background-image: linear-gradient(to right,green, rgb(91, 160, 91));
+    font-size: 50px;
+    background-image:linear-gradient(to right, #3cc3ec, rgb(38, 85, 172));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 .gradient-text{
-    background-image: linear-gradient(to right,green, rgb(91, 160, 91));
+    background-image:linear-gradient(to right, #3cc3ec, rgb(38, 85, 172));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-
+    font-weight: 700;
 }
-/*======================================================== CARD ===============================================================*/
-.card {
-    background-color: rgb(175, 69, 17) !important;
-    color: #3a3939;
-    border: none !important;
-    border-style:none !important;
 
-  } 
-  .card-header {
-    background-color: #333232;
-    padding: 15px;
-  }
-  .card-header h2 {
-    margin: 0;
-  }
-  .card-body {
-    padding: 20px;
-    background-color: #2b2929;
-    color: #cecace !important;
-  } 
-  .info-section {
-    margin-bottom: 10px;
-  }
-  strong {
-    font-weight: bold;
-  }
-/*======================================================== CARD ENDS ===========================================================*/
-.describeview{
-    padding-top: 116px;
-}
 .describeview .loginview{
-    border: 2px solid green;
+    background:linear-gradient(to top, rgb(36, 35, 35),black);
     margin-right: 0px;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 30px;
 }
+
+/*======================================================== MENU CARD IN ADMIN HOME ===============================================================*/
+
+.hod-cards{
+    background: transparent !important;
+  }
+  .hod-cards .card-body{
+    border-radius: 30px;
+    cursor: pointer;
+    /* border-left: 2px solid rgb(38, 85, 172); */
+}
+  .hod-cards .card-body:hover{
+    background: #011624 !important;
+  } 
+
+
+
 
 /*======================================================== TABLE STARTS ===========================================================*/
 
@@ -75,9 +71,6 @@
 .describeview p{
     text-wrap:pretty;
     padding-right: 18px;
-}
-.describeview h2{
-    color: rgb(201, 198, 194);
 }
 .details-card .record-bg{
     color: rgb(155, 153, 152) !important;
@@ -127,17 +120,15 @@ body{
     max-width: 70px;
 }
 .gradient-text-icon{
-    background-image: linear-gradient(to right,green, rgb(91, 160, 91));
+    background-image:linear-gradient(to right, #3cc3ec, rgb(38, 85, 172));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     font-weight: bold!important;
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
+    font-weight: 700;
 
-}
-.login-btn{
-    display: none;
 }
 /*======================================================== SEARCH BAR ==================================================*/
 .responsive-search-bar {
@@ -163,7 +154,8 @@ body{
     margin-bottom: 30px!important;
 }
 .table-top h1{
-    color: #979595!important;
+    font-weight: 700;
+
 }
 .search-button-container {
     display: flex;
@@ -191,13 +183,20 @@ body{
     height: 23px; /* Adjust height as needed */
 }
 
-/*=======================================================================================================================*/
+/*===================================================================  INPUT FIELDS  ====================================================*/
 .custom-field-bg {
-    border: none !important;
     background-color: #ceccce !important;
     font-size: 19px !important;
+    color: #4b4949 ;
+    font-weight: 300 !important;
+    border-radius: 7px;
+    height: 50px;
+}
+.custom-field-bg-login {
+    background-color: #a3a3a3 !important;
+    font-size: 19px !important;
     color: #979595 ;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     border-radius: 7px;
     height: 50px;
 }
@@ -206,13 +205,8 @@ body{
     font-weight: 500;
     font-size: 19px;
 }
-.describeview .btn{
-    border:none;
-    background-color: rgb(35, 83, 45);
-}
-.describeview .btn:hover{
-    background-color: rgb(33, 119, 50);
-}
+/*===================================================================  POP UP CONTAINER ====================================================*/
+
 /* Styles for the popup container */
 .popup-container {
     display: none;
@@ -221,7 +215,6 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     justify-content: center;
     align-items: center;
   }
@@ -232,19 +225,7 @@ body{
     align-items: end;
     color: #3a3939;
   }
-  .hod-cards{
-    background: transparent !important;
-  }
-  .hod-cards .card-body{
-    border-radius: 50px;
-    cursor: pointer;
-    border: 2px solid transparent;
 
-  }
-  .hod-cards .card-body:hover{
-    background-color: #3a3939 !important;  
-  }
-  
   /* Styles for the popup box */
   .popup-box {
     background: #fff;
@@ -255,14 +236,39 @@ body{
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
- 
-  /* Close button style */
+  .count-details h1{
+    font-weight: 700;
+  }
+  .count-details .gradient-text{
+    font-weight: 700;
+  }
+   .stat-container{
+    padding: 15px;
+    border-radius: 40px;
+    max-width: 640px !important;
+    cursor: pointer;
+    
+   }
+   .stat-container:hover{
+    background: #011624 !important;
+    
+    
+   }
   .popup-close .close-btn {
     cursor: pointer;
     border: none;
-    margin-left: 95%; 
+    margin-left: 99%; 
     border-radius: 5px; }
-   
+    .custom-alert{
+        margin-top:10px; font-weight:400;font-size:25px;
+    }
+    .navbar-toggler-icon {
+        content: "\f00d"; /* Unicode for the "X" icon */
+      }
+      
+      .navbar-toggler.is-open .navbar-toggler-icon {
+        content: "\f0c9"; /* Unicode for the hamburger icon */
+      }
 @media (min-width: 1200px) {
     .nav-container {
         margin-bottom: 25px;
@@ -274,11 +280,37 @@ body{
     .nav-container{
         padding: 0;
     }
+    .custom-alert{
+        margin-top:10px; font-weight:400;font-size:15px;
+    }
+    .stat-container{
+        overflow-x: hidden;
+        font-size: 10px !important;
+        border-radius: 20px;
+        
+        cursor: pointer;
+        padding: 5px;
+        width: 162px !important;
+    
+    }
+   
+    .stat-container img,svg{
+        max-width: 33px;
+    }
+    /* .hod-cards .card-body{
+        border-left: 2px solid rgb(31, 92, 184);
+    } */
+    .hod-cards img,svg{
+        max-height: 30px !important;
+    }
     .describeview{
         padding-top: 56px;
     }
     .phoneimage{
         max-width: 50px;
+    }
+    .phoneimage {
+        max-width: 80%vw;
     }
     .gradient-text-icon{
         font-size: 20px;
@@ -292,7 +324,22 @@ body{
     .table-top h1{
         font-size: 35px;
     }
+    .sign-in-btn{
+     width: 90%;
+     margin-left: 16px;
+    }
 
+    .custom-field-bg-login {
+        background-color: #bac7eb !important;
+        font-size: 19px !important;
+        color: #979595 ;
+        font-weight: 500 !important;
+        border-radius: 7px;
+        height: 50px;
+        width: 90% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .big-number h1{
         font-size: 68px;
       }
@@ -306,44 +353,44 @@ body{
     
     }
     .describeview .loginview h2{
-        display: none;
+        font-size: 30px !important;
+        margin-left: 25px !important;
     }
     .describeview p{
         text-wrap:pretty;
         font-size: 15px;
+        font-weight: 300;
        
     }
     .card-header h3{
-        font-size: 15px;
+        font-size: 12px;
     }
     .handy img{
         max-width: 80vw;
         align-items: end;
     }
-    .login-btn{
-        background: rgb(14, 94, 214);
-        color: #fff;
-        display: inline-block;
-        border-radius: 3px;
-        border-style: none;
-        height: 28px;
-        font-size: 15px;
-    }
     .main-menu img,svg{
         max-width: 30px !important;
     }
-    .count-details h1 {
-        font-size: 11px;
+    .count-details{
+        display: none;
     }
-    .count-details .gradient-text{
+    .count-details h1 {
         font-size: 15px;
     }
+    .count-details .gradient-text{
+        font-size: 50px;
+    }
     .navbar-logo{
-        max-height: 30px;
+        max-height: 50px;
+        min-height: 50px;
         vertical-align: middle;
         margin-right: 10px;
+        padding-left: 12px;
+        padding-top: 7px;
     }
     .describeview .loginview{
+        margin-top: 19px;
         margin-right: 10px;
     }
     .describeview h2{
@@ -412,5 +459,15 @@ body{
       #footersection footer .fas {
         font-size: 12px; /* Adjust the icon size */
       }
-    
+      .hod-cards .card-body{
+        border-radius: 20px;
+        max-height: 90px;
+
+      }
+      .hod-cards .card-body img,svg{
+        max-width: 20px !important;
+      }
+      .hod-cards .card-body h5{
+        font-size: 15px;
+      }
 }

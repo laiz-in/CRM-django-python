@@ -10,11 +10,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-dark">
-                Are you sure you want to delete this student?
+                Are you sure you want to delete this department?
             </div>
             <div class="modal-footer">
                 <button style="width: 150px" type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancel</button>
-                <form method="post" action="{% url 'delete_user' user_id=id %}">
+                <form method="post" action="{% url 'delete_department' course_id=course.id %}">
                     {% csrf_token %}
                     <button style="width: 150px" type="submit" class="btn btn-danger btn-lg m-auto">
                         <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
@@ -31,10 +31,10 @@
                 <div class="col-md-6 col-lg-6 col-12">
                     <div class="card card-primary text-light mb-2" style="background: transparent !important;">
                         <div class="card-header p-0">
-                            <h6 class="card-title">Admin / Edit Student / {{ username }} / ID: {{ id }}</h6>
+                            <h6 class="card-title">Admin / Edit department / {{ course.course_name }} / ID: {{ course.id }}</h6>
                         </div>
-                        {% url 'edit_student_save' as action_path %}
-                        {% include 'hod_template/form_template.html' with messages=messages form=form action_path=action_path button_text="Edit Student" %}
+                        {% url 'edit_department_save' as action_path %}
+                        {% include 'hod_template/form_template.html' with messages=messages form=form action_path=action_path button_text="Edit department" %}
 
                         <!-- Display Profile Picture -->
                         <div class="row">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                        <!-- Delete Student Form -->
+                        <!-- Delete department Form -->
                        
                     </div>
                 </div>

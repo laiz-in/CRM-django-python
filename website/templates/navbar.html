@@ -1,81 +1,35 @@
 {% load static %}
 
-<div class='container nav-container fixed-top'>
+<div class='container nav-container fixed-top p-0'>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:black">
   <div class="container-fluid ps-lg-0 ps-md-0 p-0">
     <a class="navbar-brand" href="{% url 'home' %}">
-      <img src="{% static 'assets/logo.png' %}" alt="" class="navbar-logo">
-      <button class="login-btn btn-primary" href="home.html/#loginuser">Login</button>
-
+      <img src="{% static 'assets/logocrm.png' %}" alt="" class="navbar-logo">
    </a>
   
   
    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+   
     <div class="collapse navbar-collapse nav-ul" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0 justify-content-end">
         
-        {% if user.is_authenticated %}
-            {% if user.is_superuser %}
                 <li class="nav-item">
                   <a class="nav-link nav-text" href="{% url 'home' %}">Home </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-text" href="{% url 'home' %}">register student </a>
+                  <a class="nav-link nav-text" href="{% url 'home' %}">About us </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-text" href="{% url 'home' %}">register parent</a>
+                  <a class="nav-link nav-text" href="{% url 'home' %}">Contact</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link nav-text" href="{% url 'home' %}">regist staff</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link logout-btn" href="{% url 'logout_user' %}">Logout</a>
-                </li>   
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">Home</a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link nav-text" href="{% url 'home' %}">Enroll student  </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-text" href="{% url 'home' %}">update student</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link logout-btn" href="{% url 'home' %}">Logout</a>
-              </li>
-              {% endif %}
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" onclick="openPopup()">How to register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Blogspot</a>
-          </li>        
-          {% comment %} <li class="nav-item">
-            <a class="nav-link" href="home.html#footersection">About us</a>
-          </li>         {% endcomment %}
-        {% endif %}
-
+                 
+    
       </ul>     
     </div>
   </div>
 
-  <div id="popup" class="popup-container" onclick="closePopup()">
-    <!-- Popup box -->
-    <div class="popup-box bg-warning">
-      <!-- Close button -->
-      <div class="popup-close ml-auto mb-2 ms-auto">
-      <button class="close-btn bg-danger text-light " onclick="closePopup()">X</button>
-      </div>
-      <div>
-      <p class ="text-dark" style="font-size:20px; font-weight:500;"> Only an admin can create staff account, kindly contact the authorities for your login credentials</p>
-    </div>
   
     </div>
   </div>

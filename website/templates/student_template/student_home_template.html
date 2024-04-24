@@ -1,21 +1,85 @@
 {% extends 'student_template/base_template.html' %}
 {% block content %}
 {% load static %}
+
+
 <div class="container">
-    <div class="row table-top align-items-center ">
-        <div class="col-md-6 p-0">
-            <h1>Hello <span class="gradient-text">{{ user.first_name}} {{ user.last_name }}</span></h1>
-        </div>
-        <div class="col-md-6 d-flex justify-content-start justify-content-md-end p-0">
-          <div id="search" class="responsive-search-bar bg-dark pl-3">
-            <input type="search" class="bg-dark" placeholder="Search by student name or ID" oninput="searchNames(this.value)">
-            <div class="search-button-container bg-dark" onclick="searchFunction()">
-                    <img src="{% static 'assets/search.svg' %}" alt="Search button" class="search-button">
-                </div>
-            </div>
-        </div>
+  <div class="row table-top align-items-center mb-3 mt-2">
+      <div class="col-md-12 mb-2 p-xs-0 ps-md-0 ps-lg-0" >
+          <h1><i class="fa fa-user" aria-hidden="true"></i> {{ user.first_name }} {{ user.last_name }}</h1>
+      </div>     
+  </div>
+</div>
+
+<div class="container p-0">
+  <div class="row">
+    <div class="col-12">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger" style="margin-top:10px;font-weight:600 !important;">{{ message }}</div>
+        {% endif %}
+        {% if message.tags == 'success' %}
+        <div class="alert alert-success" style="margin-top:10px;font-weight:600">{{ message }}</div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
     </div>
   </div>
+</div>
+
+<div class="container">
+  <div class="row ">
+      <div class="col-md-3 ps-md-0 ps-lg-0 mb-3 p-xs-0 col-6" >
+          <!-- Column 1 Content -->
+          <a href="{% url 'manage_student' %} " style="text-decoration:none;color: inherit;">
+          <div class="card hod-cards" >
+              <div class="card-body bg-dark text-center" >
+                  <img style="max-width:90px; margin-bottom:10px" src={% static "assets/student_icon.svg" %} alt="Icon">
+                  <h5 class="card-title heads">View students</h5>
+              </div>
+          </div>
+          </a>
+      </div>
+
+      <div class="col-md-3 ps-md-0 ps-lg-0 mb-3 p-xs-0 col-6" >
+        <!-- Column 1 Content -->
+        <a href="{% url 'manage_student' %} " style="text-decoration:none;color: inherit;">
+        <div class="card hod-cards" >
+            <div class="card-body bg-dark text-center" >
+                <img style="max-width:90px; margin-bottom:10px" src={% static "assets/student_icon.svg" %} alt="Icon">
+                <h5 class="card-title heads">View students</h5>
+            </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="col-md-3 ps-md-0 ps-lg-0 mb-3 p-xs-0 col-6" >
+        <!-- Column 1 Content -->
+        <a href="{% url 'manage_student' %} " style="text-decoration:none;color: inherit;">
+        <div class="card hod-cards" >
+            <div class="card-body bg-dark text-center" >
+                <img style="max-width:90px; margin-bottom:10px" src={% static "assets/student_icon.svg" %} alt="Icon">
+                <h5 class="card-title heads">View students</h5>
+            </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="col-md-3 ps-md-0 ps-lg-0 mb-3 p-xs-0 col-6" >
+        <!-- Column 1 Content -->
+        <a href="{% url 'manage_student' %} " style="text-decoration:none;color: inherit;">
+        <div class="card hod-cards" >
+            <div class="card-body bg-dark text-center" >
+                <img style="max-width:90px; margin-bottom:10px" src={% static "assets/student_icon.svg" %} alt="Icon">
+                <h5 class="card-title heads">View students</h5>
+            </div>
+        </div>
+        </a>
+      </div>
+
+
+
 {% endblock %}
 
 

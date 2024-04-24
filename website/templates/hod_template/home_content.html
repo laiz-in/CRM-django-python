@@ -3,15 +3,14 @@
 {% load static %}
 
 <div class="container">
-    <div class="row table-top align-items-center mb-5 mt-2">
-        <div class="col-md-6 mb-2 p-xs-0 ps-md-0 ps-lg-0" >
-            <h1 style="font-weight:600">Logged in as <span class="gradient-text" style="font-weight:600">Admin</span></h1>
-        </div >
-       
+    <div class="row table-top align-items-center mb-3 mt-2">
+        <div class="col-md-12 mb-2 p-xs-0 ps-md-0 ps-lg-0" >
+            <h1><i class="fa fa-user" aria-hidden="true"></i> Administrator</h1>
+        </div>     
     </div>
-  </div>
+</div>
 
-  <div class="container">
+<div class="container">
     <div class="row">
     <div class="col-12">
         {% if messages %}
@@ -26,13 +25,13 @@
         {% endif %}
     </div>
     </div>
-  </div>
-
-  <div class="container count-details p-lg-0 p-md-0">
+</div>
+<!-- ========================================================  COUNT DETAILS OF STAFF AND STUDENTS ==================================================-->
+<div class="container count-details p-lg-0 p-md-0">
     <div class="row mb-4 p-2 m-1 bg-dark" style="border-radius:30px; ">
 
         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-4">
-            <h1><span class="gradient-text">{{ total_students }}</span> Students</h1>
+            <h1 ><span class="gradient-text">{{ total_students }}</span> Students</h1>
         </div>
 
         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-4">
@@ -45,14 +44,33 @@
 
     </div>
 </div>
+<!-- ========================================================  INSIGHTS AND STATISTICS   =================================================================-->
+<div class="container p-0 mb-md-4 mb-4 ">
+    <div class="row justify-content-between m-auto">
 
- 
+        <div class="col-md-6 col-5 col-sm-4 text-light bg-dark stat-container my-md-3 ">
+            <div class="d-flex align-items-center m-auto">
+                <img style="width: 70px; margin-right: 10px;" src="{% static 'assets/insight_icon.png' %}" alt="Icon">
+                <h4>Get insights</h4>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-5 col-sm-4 text-light bg-dark stat-container my-md-3 ">
+            <div class="d-flex align-items-center">
+                <img style="width: 70px; margin-right: 10px;" src="{% static 'assets/stat_icon.png' %}" alt="Icon">
+                <h4>Get statistics</h4>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- ========================================================  MAIN CARDS IN HOD ADMIN HOME PAGE  =================================================================-->
 
   <div class="container">
-    <div class="row main-menu">
+    <div class="row ">
         <div class="col-md-3 ps-md-0 ps-lg-0 mb-3 p-xs-0 col-6" >
             <!-- Column 1 Content -->
-            <a href="{% url 'manage_student' %} " style="text-decoration:none">
+            <a href="{% url 'manage_student' %} " style="text-decoration:none;color: inherit;">
             <div class="card hod-cards" >
                 <div class="card-body bg-dark text-center" >
                     <img style="max-width:90px; margin-bottom:10px" src={% static "assets/student_icon.svg" %} alt="Icon">
@@ -63,8 +81,7 @@
         </div>
 
         <div class="col-md-3 mb-3 col-6">
-            <!-- Column 2 Content -->
-            <a href="{% url 'manage_staff' %} " style="text-decoration:none">
+            <a href="{% url 'manage_staff' %} " style="text-decoration:none;color: inherit;">
 
             <div class="card hod-cards">
                 <div class="card-body bg-dark text-center">
@@ -76,7 +93,7 @@
         </div>
 
         <div class="col-md-3 mb-3 col-6">
-            <!-- Column 3 Content -->
+            <a href="{% url 'manage_feedback' %} " style="text-decoration:none;color: inherit;">
             <div class="card hod-cards">
                 <div class="card-body bg-dark text-center">
                     <img style="max-width:92px; margin-bottom:10px" src={% static "assets/feedback_icon.svg" %} alt="Icon">
@@ -84,6 +101,7 @@
                     <h5 class="card-title heads">Feedback system</h5>
               </div>
             </div>
+            </a>
         </div>
 
         <div class="col-md-3 mb-3 col-6">
@@ -112,7 +130,7 @@
         </div>
 
         <div class="col-md-3 col-6">
-        <a href="{% url 'add_course' %} " style="text-decoration:none">
+        <a href="{% url 'manage_departments' %} " style="text-decoration:none;color: inherit;">
 
           <!-- Column 3 Content -->
           <div class="card hod-cards">
@@ -122,6 +140,32 @@
               </div>
           </div>
         </a>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <a href="{% url 'add_course' %} " style="text-decoration:none;color: inherit;">
+    
+              <!-- Column 3 Content -->
+              <div class="card hod-cards">
+                  <div class="card-body bg-dark text-center">
+                    <img style="max-width:90px; margin-bottom:10px" src={% static "assets/administration.png" %} alt="Icon">
+                    <h5 class="card-title heads">Administration</h5>
+                  </div>
+              </div>
+            </a>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <a href="{% url 'add_course' %} " style="text-decoration:none;color: inherit;">
+    
+              <!-- Column 3 Content -->
+              <div class="card hod-cards">
+                  <div class="card-body bg-dark text-center">
+                    <img style="max-width:90px; margin-bottom:10px" src={% static "assets/finance.png" %} alt="Icon">
+                    <h5 class="card-title heads">Finance</h5>
+                  </div>
+              </div>
+            </a>
         </div>
 
     </div>

@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+import datetime
 # Create your models here.
 class CustomUser(AbstractUser):
     user_type_data=((1,"HOD"),(2,"Staff"),(3,"Student"),(4,"parent"))
@@ -40,9 +40,29 @@ class Subjects(models.Model):
     objects=models.Manager()
 
 class Students(models.Model):
+    bloodGroup = [
+    ('A+', 'A+'),
+    ('A-', 'A-'),
+    ('B+', 'B+'),
+    ('B-', 'B-'),
+    ('AB+', 'AB+'),
+    ('AB-', 'AB-'),
+    ('O+', 'O+'),
+    ('O-', 'O-'),
+    ]
+     
+    referalCodes = [
+    ('1011', 'Sales agent'),
+    ('1012', 'Social media advertisments'),
+    ('1013', 'Referred by students'),
+    ('1014', 'Out of home advertisements'),
+    ('1015', 'none'),
+
+    ]
     id=models.AutoField(primary_key=True)
     admin=models.OneToOneField(CustomUser,on_delete=models.CASCADE)
     gender=models.CharField(max_length=255)
+    dob = models.DateField(default=datetime.date.today)
     profile_pic=models.FileField()
     address=models.TextField()
     course_id=models.ForeignKey(Courses,on_delete=models.DO_NOTHING)
@@ -50,6 +70,8 @@ class Students(models.Model):
     session_end_year=models.DateField()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
+    blood_group = models.CharField(max_length=3, choices=bloodGroup, null=True, blank=True)
+    referal_code = models.CharField(max_length=30, choices=referalCodes, null=True, blank=True)
     objects = models.Manager()
 
 class Attendance(models.Model):

@@ -1,43 +1,63 @@
 {% extends 'hod_template/base_template.html' %}
-{% block page_title %}
-Edit Staff  | Username : {{ staff.admin.username }} |  #ID : {{ staff.admin.id }}
-{% endblock page_title %}
-{% block main_content %}
+{% block content %}
+{% load static %}
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title text-danger" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-dark">
+              Are you sure you want to delete this staff?
+          </div>
+          <div class="modal-footer">
+              <button style="width: 150px" type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancel</button>
+              <form method="post" action="{% url 'delete_user' user_id=staff.admin.id %}">
+                  {% csrf_token %}
+                  <button style="width: 150px" type="submit" class="btn btn-danger btn-lg m-auto">
+                      <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                  </button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Edit Staff</h3>
+    <div class="container">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-12">
+                    <div class="card card-primary text-light mb-2" style="background: transparent !important;">
+                        <div class="card-header p-0">
+                            <h6 class="card-title">Admin / Edit staff / {{ staff.admin.first_name  }} {{ staff.admin.last_name   }} / ID: {{  staff.admin.id }}</h6>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form role="form" action="/edit_staff_save" method="post">
                   {% csrf_token %}
-                <div class="card-body">
+                <div class="card-body p-0 " style="background:transparent">
                   <div class="form-group">
                     <label>Email address</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter email" value="{{ staff.admin.email }}">
+                    <input type="email" class="form-control custom-field-bg mb-2" name="email" placeholder="Enter email" value="{{ staff.admin.email }}">
                   </div>
                    <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{ staff.admin.first_name }}">
+                    <input type="text" class="form-control custom-field-bg mb-2" placeholder="First Name" name="first_name" value="{{ staff.admin.first_name }}">
                   </div>
                    <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{ staff.admin.last_name }}">
+                    <input type="text" class="form-control custom-field-bg mb-2" placeholder="Last Name" name="last_name" value="{{ staff.admin.last_name }}">
                     <input type="hidden"  name="staff_id" value="{{ staff.admin.id }}">
                   </div>
                    <div class="form-group">
                     <label>Username</label>
-                    <input type="text" class="form-control" placeholder="Username" name="username" value="{{ staff.admin.username }}">
+                    <input type="text" class="form-control custom-field-bg mb-2" placeholder="Username" name="username" value="{{ staff.admin.username }}">
                   </div>
                   <div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control" placeholder="Address" name="address" value="{{ staff.address }}">
+                    <input type="text" class="form-control custom-field-bg mb-2" placeholder="Address" name="address" value="{{ staff.address }}">
                   </div>
                       <div class="form-group">
                       {% if messages %}
@@ -55,10 +75,25 @@ Edit Staff  | Username : {{ staff.admin.username }} |  #ID : {{ staff.admin.id }
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary btn-block">Save Staff</button>
+                <div class="row">
+                  <div class="col-12 mt-2">
+                    
+                          <button style="width:150px" type="submit" class=" btn btn-primary btn-lg m-auto"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                              Update</button>
+                 </div>
                 </div>
               </form>
+
+
+              <div class="row">
+                <div class="col-12 mt-2">
+                    <button style="width:150px" type="button" class="btn btn-danger btn-lg m-auto" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                    </button>
+                </div>
+            </div>
+              </div>
+          
             </div>
             <!-- /.card -->
 
@@ -67,7 +102,6 @@ Edit Staff  | Username : {{ staff.admin.username }} |  #ID : {{ staff.admin.id }
           </div>
           </div>
       </div>
-    </section>
     <!-- /.content -->
-{% endblock main_content %}
+{% endblock  %}
 

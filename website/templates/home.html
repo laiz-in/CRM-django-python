@@ -1,60 +1,65 @@
 {% extends 'base.html' %}
-
 {% block content %}
 {% load static %}
 
 
-<div class="container describeview" >
+<div class="container describeview mb-md-5" >
   <div class="row">
-    {% if messages %}
+
+     <!-- ================================================================  SHOWING MESSAGES   ======================================================================== -->
+   
+     {% if messages %}
                 {% for message in messages %}
                 {% if message.tags == 'error' %}
-                  <div class="alert alert-danger mb-5" style="margin-top:10px; font-weight:500;font-size:25px;">{{ message }}</div>
+                  <div class="alert custom-alert alert-danger mb-3 mt-5" >{{ message }}</div>
                 {% endif %}
                 {% if message.tags == 'success' %}
-                 <div class="alert alert-success mb-5" style="margin-top:10px; font-weight:500;font-size:25px;">{{ message }}</div>
+                 <div class="alert custom-alert alert-success mb-3 mt-5" >{{ message }}</div>
                 {% endif %}
                 {% endfor %}
-              {% endif %}
+      {% endif %}
+      <!-- ================================================================  MAIN DESCRIPTION SECTION  ======================================================================== -->
+
       <div class="col-md-6 order-lg-1 order-2">
-          <!-- Left side - Information about your website -->
-          <h1 >A complete student management solution</h1>
+          <h1 style="font-size: 3em;font-weight:800">A complete DB solution <i class="fa fa-bolt" aria-hidden="true"></i></h1>
           <br>
           <p>a comprehensive platform that simplifies student records and management. Our solution empowers you to create administrative accounts securely and efficiently store essential data, providing a centralized hub for managing students details, marks, perfomance details and more. With user-friendly interfaces and robust functionalities, our SRM enables seamless organization, analysis, and access to critical student informations</p>
       </div>
 
+      <!-- ==================================================================  LOGIN FORM  ======================================================================== -->
+
       <div class="col-md-6 loginview order-lg-2 order-1" id="loginuser">
-          <!-- Right side - Login form -->
-
           <div class="col-md-8  offset-md-2 ">
-            <h2 class="mb-md-5 " style="font-size: 39px; padding:2px; margin-top:-45px; background-color:black;max-width:fit-content;"> login</h2>
-
-              <form action="/doLogin/" method="post" >
+            <h2 class="mb-md-3 " style="font-size: 3em;">Sign in</h2>
+              <form action="/doLogin/" method="post" class="p-2">
                 {% csrf_token %}
-              <div class=" mb-3">
-                <input type="email" class="form-control custom-field-bg" placeholder="Email" name="email" required >
-              </div>
-              <div class="mb-3">
-                <input type="password" class="form-control custom-field-bg" placeholder="Password" name="password" required >
-              </div>
-              <div class="row">
-                <!-- /.col -->
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                </div><!-- /.col -->
-              </div>
-                
+                  <div class=" mb-3 mt-2">
+                    <input type="email" class="form-control custom-field-bg-login" placeholder= "&#x2709;  Email" name="email" required >
+                  </div>
+                  <div class="mb-3">
+                    <input type="password" class="form-control custom-field-bg-login" placeholder="&#x1F512; Password" name="password" required >
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary btn-block sign-in-btn mb-3">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
             </form>
+          
           </div>
       </div>
+     
+
   </div>
 </div>
 
-<div class="container">
-    <div class= "row feature-cards">
+<!-- ==================================================================  4 CARDS WITH HEADINGS  ======================================================================== -->
+
+<div class="container ">
+    <div class= "row feature-cards mb-5">
         <div class ="col-md-3 mb-3 col-6 single-card">
           <div class="icon-container">
-            <img src={% static "assets/teacher_portal.svg" %} alt="Icon">
+            <img class="opacity-50" src={% static "assets/teacher_portal.svg" %} alt="Icon">
           </div>
           <h1 class="gradient-text-icon">Teacher portal </h1>
         </div>
@@ -62,7 +67,7 @@
         <div class ="col-md-3 mb-3 col-6 single-card ">
             <div class="icon-container">
               <!-- Using an <img> tag for the icon -->
-              <img src={% static "assets/parent_portal.svg" %} alt="Icon">
+              <img class="opacity-50" src={% static "assets/parent_portal.svg" %} alt="Icon">
           </div>
           <h1 class="gradient-text-icon">Parent portal</h1>
         </div>
@@ -70,7 +75,7 @@
         <div class ="col-md-3 mb-3 col-6 single-card">
             <div class="icon-container">
               <!-- Using an <img> tag for the icon -->
-              <img src={% static "assets/progress_icon.svg" %} alt="Icon">
+              <img class="opacity-50" src={% static "assets/progress_icon.svg" %} alt="Icon">
           </div>
           <h1 class="gradient-text-icon">Progress analysis</h1>
         </div>
@@ -78,13 +83,14 @@
         <div class ="col-md-3 mb-3 col-6 single-card">
             <div class="icon-container">
               <!-- Using an <img> tag for the icon -->
-              <img src={% static "assets/ai_icon.svg" %} alt="Icon">
+              <img class="opacity-50" src={% static "assets/ai_icon.svg" %} alt="Icon">
           </div>
           <h1 class="gradient-text-icon">AI enabled predictions</h1>
         </div>
     </div>
 </div>
 
+<!-- ==================================================================  3 BENEFITS WITH HEADINGS  ======================================================================== -->
 
 <div class="container ">
   <div class="row">
@@ -92,7 +98,7 @@
 
         <div class="row mb-3">
           <div class="col-2 big-number">
-            <h1>1</h1>
+            <h1><i class="fa fa-mobile" aria-hidden="true"></i></h1>
           </div>
           <div class="col-6 d-flex align-items-center big-number">
             <h4>Its handy ! so easy to use with mobiles</h4>
@@ -101,7 +107,7 @@
          
         <div class="row mb-3">
           <div class="col-2 big-number">
-            <h1 class="p-0 m-0">2</h1>
+            <h1 class="p-0 m-0"><i class="fa fa-inr" aria-hidden="true"></i></h1>
           </div>
           <div class="col-6 d-flex align-items-center big-number">
             <h4>Cost-Effective Development!
@@ -110,8 +116,8 @@
         </div>
 
         <div class="row">
-          <div class="col-2 big-number">
-            <h1>3</h1>
+          <div class="col-2 big-number ">
+            <h1><i class="fa fa-share-square-o" aria-hidden="true"></i> </h1>
           </div>
           <div class="col-6 d-flex align-items-center big-number">
             <h4>Social Media Friendliness !</h4>
@@ -121,19 +127,20 @@
 
       </div>
       <div class="col-md-6 col-lg-6 col-sm-6 col-12 phoneimage">
-        <img src="{% static 'assets/phone.png' %}" alt="Description of the image">
+        <img src="{% static 'assets/phone.png' %}" alt="Description of the image" class="img-fluid">
       </div>
   </div>
 </div>
 
+<!-- ==================================================================  FOOTER SECTION  ======================================================================== -->
 
 <div class="container my-5 p-0 " id="footersection">
 
   <!-- Footer -->
   <footer
           class="text-center footer text-lg-start text-white p-0"
-          style="border: 2px solid green;
-                 border-radius:20px;">
+          style="background: linear-gradient(to top, black, rgb(36, 35, 35));
+                 border-radius:30px;">
 
     <!-- Section: Links  -->
     <section class="">
@@ -207,12 +214,12 @@
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
-                <p><i class="fas fa-home mr-3"></i>Laizin V</p>
+                <p>Laizin V</p>
 
-            <p><i class="fas fa-home mr-3"></i> khalidiyyah, abudhabi - UAE</p>
-            <p><i class="fas fa-envelope mr-3"></i> laizin2107@gmail.com.com</p>
-            <p><i class="fas fa-phone mr-3"></i> + 971 503349730</p>
-            <p><i class="fas fa-print mr-3"></i> + 91 8113937942</p>
+            <p>khalidiyyah, abudhabi - UAE</p>
+            <p>laizin2107@gmail.com.com</p>
+            <p>+ 971 503349730</p>
+            <p>+ 91 8113937942</p>
           </div>
           <!-- Grid column -->
         </div>
@@ -227,8 +234,8 @@
          style="background-color: rgba(0, 0, 0, 0.2)"
          >
       © 2023 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/"
-         >dataedu.com</a
+      <a class="text-white" href=""
+         >edudb.com</a
         >
     </div>
     <!-- Copyright -->

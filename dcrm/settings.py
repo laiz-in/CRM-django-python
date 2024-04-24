@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-jcxge@8cwms-4-$&qia^6p+^8-qwrsw7vey#0e6e326apg3mvo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.200']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.234']
 
 AUTH_USER_MODEL = "website.CustomUser"
 AUTHENTICATION_BACKENDS=['website.EmailBackEnd.EmailBackEnd']
@@ -31,7 +31,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    
 ]
+
+SESSION_COOKIE_AGE = 6 * 60 * 60
+SESSION_SAVE_EVERY_REQUEST = True
 
 
 MIDDLEWARE = [
@@ -117,9 +121,11 @@ ADMIN_URL = 'admin/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT =os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type

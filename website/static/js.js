@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+document.querySelector('.navbar-toggler').addEventListener('click', function () {
+    // Toggle the 'is-open' class on the navbar-toggler button
+    this.classList.toggle('is-open');
+  });
 
 function searchNames(input) {
     var names = document.querySelectorAll('tbody tr');
@@ -29,20 +33,37 @@ function searchNames(input) {
     });
 }
 
-
-function searchheads(input) {
-    var names = document.querySelectorAll('h5');
+function searchNamestaff(input) {
+    var names = document.querySelectorAll('tbody tr');
 
     names.forEach(function(name) {
-        var fullName = name.querySelector('.heads').innerText.toLowerCase(); // Assuming 'student-name' is the class of the name column
+        var fullName = name.querySelector('.staff-name').innerText.toLowerCase(); // Assuming 'staff-name' is the class of the name column
+        var id = name.getElementsByTagName('td')[0].innerText.toLowerCase(); // ID
 
-        if (fullName.includes(input.toLowerCase())) {
-            name.style.display = "hod-cards"; // Show the row if either name or ID matches
+        if (fullName.includes(input.toLowerCase()) || id.includes(input.toLowerCase())) {
+            name.style.display = "table-row"; // Show the row if either name or ID matches
         } else {
             name.style.display = "none"; // Hide the row if neither name nor ID matches
         }
     });
 }
+
+function searchNamesdpt(input) {
+    var names = document.querySelectorAll('tbody tr');
+
+    names.forEach(function(name) {
+        var fullName = name.querySelector('.dpt-name').innerText.toLowerCase(); // Assuming 'staff-name' is the class of the name column
+        var id = name.getElementsByTagName('td')[0].innerText.toLowerCase(); // ID
+
+        if (fullName.includes(input.toLowerCase()) || id.includes(input.toLowerCase())) {
+            name.style.display = "table-row"; // Show the row if either name or ID matches
+        } else {
+            name.style.display = "none"; // Hide the row if neither name nor ID matches
+        }
+    });
+}
+
+
 function openPopup() {
     document.getElementById('popup').style.display = 'flex';
   }
